@@ -13,6 +13,8 @@
 import { app, BrowserWindow } from 'electron';
 import MenuBuilder from './menu';
 
+require('update-electron-app')();
+
 let mainWindow = null;
 
 if (process.env.NODE_ENV === 'production') {

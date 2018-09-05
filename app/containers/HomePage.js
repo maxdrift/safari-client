@@ -1,13 +1,16 @@
 // @flow
-import React, { Component } from 'react';
-import Home from '../components/Home';
+import React from 'react';
+import SCNavBarContainer from '../containers/SCNavBarContainer';
+import SCSlidesFilterTabs from '../containers/SCSlidesFilterTabs';
+import SCHasSlidesContainer from '../containers/SCHasSlidesContainer';
 
-type Props = {};
+const HomePage = () => (
+  <div>
+    <SCNavBarContainer>
+      <SCSlidesFilterTabs />
+    </SCNavBarContainer>
+    <SCHasSlidesContainer />
+  </div>
+);
 
-export default class HomePage extends Component<Props> {
-  props: Props;
-
-  render() {
-    return <Home />;
-  }
-}
+export default HomePage;

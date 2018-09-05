@@ -2,9 +2,11 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
-@import "~font-awesome/css/font-awesome.css";
+/* @import "~font-awesome/css/font-awesome.css"; */
 
-body {
+/* @import "~react-image-gallery/styles/css/image-gallery.css"; */
+
+/* body {
   position: relative;
   color: white;
   height: 100vh;
@@ -40,4 +42,4 @@ a:hover {
   opacity: 1;
   text-decoration: none;
   cursor: pointer;
-}
+} */

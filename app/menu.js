@@ -16,9 +16,10 @@ export default class MenuBuilder {
       this.setupDevelopmentEnvironment();
     }
 
-    const template = process.platform === 'darwin'
-      ? this.buildDarwinTemplate()
-      : this.buildDefaultTemplate();
+    const template =
+      process.platform === 'darwin'
+        ? this.buildDarwinTemplate()
+        : this.buildDefaultTemplate();
 
     const menu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(menu);
@@ -44,17 +45,17 @@ export default class MenuBuilder {
 
   buildDarwinTemplate() {
     const subMenuAbout = {
-      label: 'Electron',
+      label: 'Safari Client',
       submenu: [
         {
-          label: 'About ElectronReact',
+          label: 'About Safari Client',
           selector: 'orderFrontStandardAboutPanel:'
         },
         { type: 'separator' },
         { label: 'Services', submenu: [] },
         { type: 'separator' },
         {
-          label: 'Hide ElectronReact',
+          label: 'Hide Safari Client',
           accelerator: 'Command+H',
           selector: 'hide:'
         },

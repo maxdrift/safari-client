@@ -3,11 +3,19 @@ import thunk from 'redux-thunk';
 import { createHashHistory } from 'history';
 import { routerMiddleware, routerActions } from 'react-router-redux';
 import { createLogger } from 'redux-logger';
+import { persistStore, persistReducer } from 'redux-persist';
+import createElectronStorage from 'redux-persist-electron-storage';
 import rootReducer from '../reducers';
-import * as counterActions from '../actions/counter';
-import type { counterStateType } from '../reducers/counter';
 
 const history = createHashHistory();
+
+const persistConfig = {
+  key: 'root',
+  storage: createElectronStorage(),
+  blacklist: ['visibilityFilter']
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const configureStore = (initialState?: counterStateType) => {
   // Redux Configuration
@@ -34,7 +42,6 @@ const configureStore = (initialState?: counterStateType) => {
 
   // Redux DevTools Configuration
   const actionCreators = {
-    ...counterActions,
     ...routerActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
@@ -52,7 +59,7 @@ const configureStore = (initialState?: counterStateType) => {
   const enhancer = composeEnhancers(...enhancers);
 
   // Create Store
-  const store = createStore(rootReducer, initialState, enhancer);
+  const store = createStore(persistedReducer, initialState, enhancer);
 
   if (module.hot) {
     module.hot.accept(
@@ -61,7 +68,9 @@ const configureStore = (initialState?: counterStateType) => {
     );
   }
 
-  return store;
+  const persistor = persistStore(store);
+
+  return { store, persistor };
 };
 
 export default { configureStore, history };
