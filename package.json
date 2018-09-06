@@ -51,6 +51,11 @@
       "main.prod.js.map",
       "package.json"
     ],
+    "publish": {
+      "provider": "github",
+      "owner": "maxdrift",
+      "releaseType": "prerelease"
+    },
     "dmg": {
       "contents": [
         {
@@ -198,6 +203,7 @@
     "csv-stringify": "^4.0.1",
     "devtron": "^1.4.0",
     "electron-debug": "^1.5.0",
+    "electron-log": "^2.2.17",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "image-size": "^0.6.3",

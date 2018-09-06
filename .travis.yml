@@ -26,24 +26,9 @@ script:
       -v ~/.cache/electron:/root/.cache/electron \
       -v ~/.cache/electron-builder:/root/.cache/electron-builder \
       electronuserland/builder:wine-mono \
-      /bin/bash -c "yarn --link-duplicates --pure-lockfile && yarn package --linux --win"
+      /bin/bash -c "yarn --link-duplicates --pure-lockfile && yarn package --linux --win --publish onTagOrDraft"
   else
-    yarn package
+    yarn package --publish onTagOrDraft
   fi
 before_cache:
 - rm -rf $HOME/.cache/electron-builder/wine
-
-deploy:
-  provider: releases
-  prerelease: true
-  api_key:
-    secure: q8RfX2vEcbaxDDVANl6WQhimRkq+YR3PGXXv6PIL1xtnwksEYDi8vb6rfp95raHu32upv+6dd8aJ3328jjRip/+V2GALaBy7OroSgJb7SAMPUVXgJk/iqT7Y5oKpN0Nmu7QEDfhjWqNnGnmkrtOYXYgA31UVildWmzRw5rxJ2Ez7ifztUusDYEf5PYcJlAbPyBO0Pmtq2xMnxTcWUdQIiIBr4O2y6gVkhL1q/ZIeF0nMqB3w5q+l89avJSN4SCJ/wl4Mj1T2tJLDAqS5nErZdnVSwiO0PsaY+VUCNlf+sinYV/5F0TDFL3EQZN3ReKtJe1pplOe5K4Pi6eGUqFw0sgpenDwh39eg4dhLLRZu4TgZc8osM9Wg/1ns73UoiccCSZyBdCHA5K9tHi+fsaaNHzBMEgTxyEiiOqpzg/Ayml2BoVQ09UDYWGMOOtI0qQi9kKxe4rRGW9JUg/pdgIx15rXnduKqvNtzc9keVCHd8YAF6wuFHUOc2B1Fe4iWO9e1MG47d5/Q+n2jqsD4FYn3A7dhfcnfJ0VWy4ddhzSGu//rSCyjWH7sCtbx0pUsRYh+ca6T+hW8AIiNDOZd4QB6ZKJAncMpY+WYDfqiMkcApBbtFpWTjgu2KdeYzJHChCQJxo8UMka42/MJQj3WZk/V2ZfBoSBmz2CYfmny8Blc0Ak=
-  file_glob: true
-  file:
-    - release/*.deb
-    - release/*.zip
-    - release/*.exe
-  skip_cleanup: true
-  on:
-    tags: true
-    repo: maxdrift/safari-client

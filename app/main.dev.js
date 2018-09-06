@@ -13,8 +13,6 @@
 import { app, BrowserWindow } from 'electron';
 import MenuBuilder from './menu';
 
-require('update-electron-app')();
-
 let mainWindow = null;
 
 if (process.env.NODE_ENV === 'production') {
@@ -60,6 +58,12 @@ app.on('ready', async () => {
     process.env.DEBUG_PROD === 'true'
   ) {
     await installExtensions();
+  }
+
+  if (process.env.NODE_ENV === 'production') {
+    require('update-electron-app')({
+      logger: require('electron-log')
+    });
   }
 
   mainWindow = new BrowserWindow({
