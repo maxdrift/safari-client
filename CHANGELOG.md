@@ -1,5 +1,8 @@
 ## Changelog
 
+### 0.0.4
+- Set up auto updates via 'update-electron-app'
+
 ### 0.0.3
 - Update Travis config for deployment
 - Update AppVeyor config with artifacts and deployment
