@@ -1,42 +1,49 @@
-sudo: true
-
-language: node_js
-
-node_js:
-  - node
-  - 9
-
+matrix:
+  include:
+  - os: osx
+    osx_image: xcode9.4
+    language: node_js
+    node_js: '10'
+    env:
+    - ELECTRON_CACHE=$HOME/.cache/electron
+    - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+  - os: linux
+    services: docker
+    language: generic
 cache:
   yarn: true
   directories:
-    - node_modules
-    - app/node_modules
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
-      - icnsutils
-      - graphicsmagick
-      - xz-utils
-      - xorriso
-
-install:
-  - export CXX="g++-4.8"
-  - yarn
-  - cd app && yarn && cd ..
-  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
-
-before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start &
-  - sleep 3
-
+  - node_modules
+  - app/node_modules
+  - "$HOME/.cache/electron"
+  - "$HOME/.cache/electron-builder"
 script:
-  - node --version
-  - yarn lint
-  - yarn package
-  # - yarn test
-  # - yarn test-e2e
+- |
+  if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+    docker run --rm \
+      --env-file <(env | grep -iE 'DEBUG|NODE_|ELECTRON_|YARN_|NPM_|CI|CIRCLE|TRAVIS|APPVEYOR_|CSC_|_TOKEN|_KEY|AWS_|STRIP|BUILD_') \
+      -v ${PWD}:/project \
+      -v ~/.cache/electron:/root/.cache/electron \
+      -v ~/.cache/electron-builder:/root/.cache/electron-builder \
+      electronuserland/builder:wine-mono \
+      /bin/bash -c "yarn --link-duplicates --pure-lockfile && yarn package --linux --win"
+  else
+    yarn package
+  fi
+before_cache:
+- rm -rf $HOME/.cache/electron-builder/wine
+
+deploy:
+  provider: releases
+  prerelease: true
+  api_key:
+    secure: q8RfX2vEcbaxDDVANl6WQhimRkq+YR3PGXXv6PIL1xtnwksEYDi8vb6rfp95raHu32upv+6dd8aJ3328jjRip/+V2GALaBy7OroSgJb7SAMPUVXgJk/iqT7Y5oKpN0Nmu7QEDfhjWqNnGnmkrtOYXYgA31UVildWmzRw5rxJ2Ez7ifztUusDYEf5PYcJlAbPyBO0Pmtq2xMnxTcWUdQIiIBr4O2y6gVkhL1q/ZIeF0nMqB3w5q+l89avJSN4SCJ/wl4Mj1T2tJLDAqS5nErZdnVSwiO0PsaY+VUCNlf+sinYV/5F0TDFL3EQZN3ReKtJe1pplOe5K4Pi6eGUqFw0sgpenDwh39eg4dhLLRZu4TgZc8osM9Wg/1ns73UoiccCSZyBdCHA5K9tHi+fsaaNHzBMEgTxyEiiOqpzg/Ayml2BoVQ09UDYWGMOOtI0qQi9kKxe4rRGW9JUg/pdgIx15rXnduKqvNtzc9keVCHd8YAF6wuFHUOc2B1Fe4iWO9e1MG47d5/Q+n2jqsD4FYn3A7dhfcnfJ0VWy4ddhzSGu//rSCyjWH7sCtbx0pUsRYh+ca6T+hW8AIiNDOZd4QB6ZKJAncMpY+WYDfqiMkcApBbtFpWTjgu2KdeYzJHChCQJxo8UMka42/MJQj3WZk/V2ZfBoSBmz2CYfmny8Blc0Ak=
+  file_glob: true
+  file:
+    - release/*.deb
+    - release/*.zip
+    - release/*.exe
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: maxdrift/safari-client
