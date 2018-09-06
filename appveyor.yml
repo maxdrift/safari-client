@@ -3,7 +3,6 @@ os: unstable
 environment:
   matrix:
     - nodejs_version: 10
-    - nodejs_version: 9
 
 cache:
   - "%LOCALAPPDATA%/Yarn"
@@ -31,5 +30,3 @@ test_script:
   - node --version
   - yarn lint
   - yarn package
-  # - yarn test
-  # - yarn test-e2e
