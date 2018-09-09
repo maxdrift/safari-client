@@ -48,7 +48,7 @@ export default class MenuBuilder {
       label: 'Safari Client',
       submenu: [
         {
-          label: 'About Safari Client',
+          label: `About Safari Client ${app.getVersion()}`,
           selector: 'orderFrontStandardAboutPanel:'
         },
         { type: 'separator' },
@@ -81,9 +81,9 @@ export default class MenuBuilder {
         { label: 'Undo', accelerator: 'Command+Z', selector: 'undo:' },
         { label: 'Redo', accelerator: 'Shift+Command+Z', selector: 'redo:' },
         { type: 'separator' },
-        { label: 'Cut', accelerator: 'Command+X', selector: 'cut:' },
-        { label: 'Copy', accelerator: 'Command+C', selector: 'copy:' },
-        { label: 'Paste', accelerator: 'Command+V', selector: 'paste:' },
+        // { label: 'Cut', accelerator: 'Command+X', selector: 'cut:' },
+        // { label: 'Copy', accelerator: 'Command+C', selector: 'copy:' },
+        // { label: 'Paste', accelerator: 'Command+V', selector: 'paste:' },
         {
           label: 'Select All',
           accelerator: 'Command+A',
@@ -137,7 +137,6 @@ export default class MenuBuilder {
           accelerator: 'Command+M',
           selector: 'performMiniaturize:'
         },
-        { label: 'Close', accelerator: 'Command+W', selector: 'performClose:' },
         { type: 'separator' },
         { label: 'Bring All to Front', selector: 'arrangeInFront:' }
       ]
@@ -148,29 +147,29 @@ export default class MenuBuilder {
         {
           label: 'Learn More',
           click() {
-            shell.openExternal('http://electron.atom.io');
-          }
-        },
-        {
-          label: 'Documentation',
-          click() {
-            shell.openExternal(
-              'https://github.com/atom/electron/tree/master/docs#readme'
-            );
-          }
-        },
-        {
-          label: 'Community Discussions',
-          click() {
-            shell.openExternal('https://discuss.atom.io/c/electron');
-          }
-        },
-        {
-          label: 'Search Issues',
-          click() {
-            shell.openExternal('https://github.com/atom/electron/issues');
+            shell.openExternal('https://github.com/maxdrift/safari-client');
           }
         }
+        // {
+        //   label: 'Documentation',
+        //   click() {
+        //     shell.openExternal(
+        //       'https://github.com/atom/electron/tree/master/docs#readme'
+        //     );
+        //   }
+        // },
+        // {
+        //   label: 'Community Discussions',
+        //   click() {
+        //     shell.openExternal('https://discuss.atom.io/c/electron');
+        //   }
+        // },
+        // {
+        //   label: 'Search Issues',
+        //   click() {
+        //     shell.openExternal('https://github.com/atom/electron/issues');
+        //   }
+        // }
       ]
     };
 
@@ -190,10 +189,10 @@ export default class MenuBuilder {
             accelerator: 'Ctrl+O'
           },
           {
-            label: '&Close',
-            accelerator: 'Ctrl+W',
+            label: '&Quit',
+            accelerator: 'Alt+F4',
             click: () => {
-              this.mainWindow.close();
+              app.quit();
             }
           }
         ]
@@ -245,29 +244,29 @@ export default class MenuBuilder {
           {
             label: 'Learn More',
             click() {
-              shell.openExternal('http://electron.atom.io');
-            }
-          },
-          {
-            label: 'Documentation',
-            click() {
-              shell.openExternal(
-                'https://github.com/atom/electron/tree/master/docs#readme'
-              );
-            }
-          },
-          {
-            label: 'Community Discussions',
-            click() {
-              shell.openExternal('https://discuss.atom.io/c/electron');
-            }
-          },
-          {
-            label: 'Search Issues',
-            click() {
-              shell.openExternal('https://github.com/atom/electron/issues');
+              shell.openExternal('https://github.com/maxdrift/safari-client');
             }
           }
+          // {
+          //   label: 'Documentation',
+          //   click() {
+          //     shell.openExternal(
+          //       'https://github.com/atom/electron/tree/master/docs#readme'
+          //     );
+          //   }
+          // },
+          // {
+          //   label: 'Community Discussions',
+          //   click() {
+          //     shell.openExternal('https://discuss.atom.io/c/electron');
+          //   }
+          // },
+          // {
+          //   label: 'Search Issues',
+          //   click() {
+          //     shell.openExternal('https://github.com/atom/electron/issues');
+          //   }
+          // }
         ]
       }
     ];

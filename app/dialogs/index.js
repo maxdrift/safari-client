@@ -1,5 +1,7 @@
-const fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
-const { dialog } = require('electron').remote;
+import fs from 'fs'; // Load the File System to execute our common tasks (CRUD)
+import { remote } from 'electron';
+
+const { dialog } = remote;
 
 export const showSaveDialog = content => {
   // You can obviously give a direct path without use the dialog (C:/Program Files/path/myfileexample.txt)
@@ -19,12 +21,14 @@ export const showSaveDialog = content => {
       fs.writeFile(fileName, content, err => {
         if (err) {
           dialog.showErrorBox(
-            'File Creation Error',
-            `An error ocurred creating the file ${err.message}`
+            'Error di salvataggio',
+            `Si è verificato un errore durante il salvataggio del file: ${
+              err.message
+            }`
           );
         }
         dialog.showMessageBox({
-          message: 'The file has been saved!',
+          message: 'Il file è stato salvato!',
           buttons: ['OK']
         });
       });
@@ -45,16 +49,6 @@ export const showOpenDialog = callback => {
         return;
       }
       return callback(fileNames);
-      // fileNames.map(fileName => (
-      //   fs.readFile(fileName, (err, data) => {
-      //     if (err) {
-      //       dialog.showErrorBox('File Reading Error', `An error ocurred reading the file :${err.message}`)
-      //       return
-      //     }
-      //     // Change how to handle the file content
-      //     console.log(`The file content is : ${data}`)
-      //   })
-      // ))
     }
   );
 };

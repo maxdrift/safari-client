@@ -47,9 +47,10 @@ const installExtensions = async () => {
 app.on('window-all-closed', () => {
   // Respect the OSX convention of having the application in memory even
   // after all windows have been closed
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  // if (process.platform !== 'darwin') {
+  //   app.quit();
+  // }
+  app.quit();
 });
 
 app.on('ready', async () => {
@@ -69,7 +70,8 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
-    height: 728
+    height: 728,
+    title: `Safari Client ${app.getVersion()}`
   });
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);

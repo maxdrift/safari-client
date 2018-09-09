@@ -88,7 +88,7 @@ const SCNavBar = props => {
               className={classes.button}
             >
               <SaveIcon size="small" className={classes.extendedIcon} />
-              Esporta in CSV
+              Esporta CSV
             </Button>
           ) : (
             <SelectionControls
