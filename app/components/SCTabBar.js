@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Badge from '@material-ui/core/Badge';
+import { slideStates } from '../actions/slides';
+import { filterToState } from '../actions/visibilityFilter';
 
 const styles = theme => ({
   root: {
@@ -18,9 +20,21 @@ const styles = theme => ({
   }
 });
 
+const indicatorColor = currentFilter => {
+  const state = slideStates[filterToState(currentFilter)];
+  return state ? state.color : 'black';
+};
+
 const SCTabBar = ({ classes, tabsData, currentFilter, onChange }) => (
   <div className={classes.root}>
-    <Tabs value={currentFilter} onChange={onChange} centered>
+    <Tabs
+      TabIndicatorProps={{
+        style: { backgroundColor: indicatorColor(currentFilter) }
+      }}
+      value={currentFilter}
+      onChange={onChange}
+      centered
+    >
       {tabsData.map(({ label, filter, counter }) => (
         <Tab
           key={filter}

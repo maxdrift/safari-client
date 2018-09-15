@@ -68,9 +68,12 @@ app.on('ready', async () => {
   }
 
   mainWindow = new BrowserWindow({
+    nodeIntegration: false,
     show: false,
     width: 1024,
     height: 728,
+    minWidth: 690,
+    minHeight: 527,
     title: `Safari Client ${app.getVersion()}`
   });
 

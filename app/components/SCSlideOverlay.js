@@ -2,50 +2,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
 import { slideStates } from '../actions/slides';
 import SCCorner from './SCCorner';
-import SCTagSelect from './SCTagSelect';
+import SCSlideHeader from './SCSlideHeader';
+import SCSlideFooter from './SCSlideFooter';
 import { subjects } from '../reducers/subjects';
 
 const styles = {};
 
-const SCSlideOverlay = ({
-  classes,
-  photo,
-  toggleSlideState,
-  setSlideSubject
-}) => (
+const SCSlideOverlay = ({ photo, toggleSlideState, openSubjectsModal }) => (
   <div className="slide-overlay">
+    <SCSlideHeader>{photo.alt}</SCSlideHeader>
     <SCCorner
       color={slideStates[photo.state].color}
       altText={slideStates[photo.state].label}
       onClick={() => toggleSlideState(photo.id)}
     />
-    <GridListTileBar
-      className={classes.gridListTileBar}
-      title={photo.alt}
-      subtitle={photo.subjectid ? subjects[photo.subjectid].name : 'n/d'}
-      actionIcon={
-        <SCTagSelect
-          onClick={subjectid => setSlideSubject(photo.id, subjectid)}
-          selected={photo.subjectid}
-        />
-      }
-    />
+    <SCSlideFooter
+      onLabelClick={() => openSubjectsModal([photo.id], photo.subjectid)}
+    >
+      {photo.subjectid > 0
+        ? subjects[photo.subjectid].name
+        : 'Seleziona una specie'}
+    </SCSlideFooter>
     <style>{'.slide-overlay{display:none}'}</style>
   </div>
 );
 
 SCSlideOverlay.propTypes = {
-  classes: PropTypes.object.isRequired,
   photo: PropTypes.shape({
     src: PropTypes.string,
     width: PropTypes.number,
     height: PropTypes.number
   }).isRequired,
   toggleSlideState: PropTypes.func.isRequired,
-  setSlideSubject: PropTypes.func.isRequired
+  openSubjectsModal: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(SCSlideOverlay);
+export default withStyles(styles, { withTheme: true })(SCSlideOverlay);

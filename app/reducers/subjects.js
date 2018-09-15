@@ -1,7 +1,28 @@
 export const subjects = {
-  1: { id: 1, name: 'ACCIUGA', sci_name: 'Engraulis encrasicholus', coeff: 6 },
-  2: { id: 2, name: 'AGUGLIA ', sci_name: 'Belone belone', coeff: 6 },
-  3: { id: 3, name: 'ANGUILLA', sci_name: 'Anguilla anguilla', coeff: 2 },
+  0: {
+    id: 0,
+    name: 'Rimuovi specie',
+    sci_name: '',
+    coeff: null
+  },
+  1: {
+    id: 1,
+    name: 'ACCIUGA',
+    sci_name: 'Engraulis encrasicholus',
+    coeff: 6
+  },
+  2: {
+    id: 2,
+    name: 'AGUGLIA ',
+    sci_name: 'Belone belone',
+    coeff: 6
+  },
+  3: {
+    id: 3,
+    name: 'ANGUILLA',
+    sci_name: 'Anguilla anguilla',
+    coeff: 2
+  },
   4: {
     id: 4,
     name: 'BAVOSA ADRIATICA',

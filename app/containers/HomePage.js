@@ -3,6 +3,7 @@ import React from 'react';
 import SCNavBarContainer from '../containers/SCNavBarContainer';
 import SCSlidesFilterTabs from '../containers/SCSlidesFilterTabs';
 import SCHasSlidesContainer from '../containers/SCHasSlidesContainer';
+import SCSubjectsModalContainer from '../containers/SCSubjectsModalContainer';
 
 const HomePage = () => (
   <div>
@@ -10,6 +11,7 @@ const HomePage = () => (
       <SCSlidesFilterTabs />
     </SCNavBarContainer>
     <SCHasSlidesContainer />
+    <SCSubjectsModalContainer />
   </div>
 );
 

@@ -3,8 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Safari Client</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
     <script>
       (function() {
         if (!process.env.HOT) {
@@ -21,6 +19,17 @@
     <div id="root"></div>
     <script>
       {
+        // Disable drag and drop in the whole window frame.
+        document.addEventListener('dragover',function(event){
+          event.preventDefault();
+          return false;
+        },false);
+
+        document.addEventListener('drop',function(event){
+          event.preventDefault();
+          return false;
+        },false);
+
         const scripts = [];
 
         // Dynamically insert the DLL script in development env in the

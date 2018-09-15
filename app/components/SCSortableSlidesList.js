@@ -49,7 +49,7 @@ class SCGallery extends Component {
       slides,
       toggleSlideSelected,
       toggleSlideState,
-      setSlideSubject,
+      openSubjectsModal,
       columns
     } = this.props;
     return (
@@ -63,7 +63,7 @@ class SCGallery extends Component {
               i={props.index}
               toggleSlideSelected={toggleSlideSelected}
               toggleSlideState={toggleSlideState}
-              setSlideSubject={setSlideSubject}
+              openSubjectsModal={openSubjectsModal}
               openLightbox={this.openLightbox}
             />
           )}
@@ -85,23 +85,13 @@ SCGallery.propTypes = {
   slides: PropTypes.arrayOf(PropTypes.object).isRequired,
   toggleSlideSelected: PropTypes.func.isRequired,
   toggleSlideState: PropTypes.func.isRequired,
-  setSlideSubject: PropTypes.func.isRequired,
+  openSubjectsModal: PropTypes.func.isRequired,
   columns: PropTypes.number.isRequired
 };
 
 const SCSortableContainer = SortableContainer(props => (
   <SCGallery {...props} />
 ));
-
-// const ShouldCancelStart = (e) => {
-//   console.log('Target:', e.target.tagName.toLowerCase())
-//   // Cancel sorting if the event target is an `input`, `textarea`, `select`, `option` or `path`
-//   const disabledElements = ['input', 'textarea', 'select', 'option', 'button', 'path', 'circle', 'polygon', 'p', 'svg']
-//
-//   if (disabledElements.indexOf(e.target.tagName.toLowerCase()) !== -1) {
-//     return true // Return true to cancel sorting
-//   }
-// }
 
 const SCSortableSlidesList = props => (
   <SCSortableContainer
@@ -119,7 +109,7 @@ SCSortableSlidesList.propTypes = {
   onSortEnd: PropTypes.func.isRequired,
   toggleSlideSelected: PropTypes.func.isRequired,
   toggleSlideState: PropTypes.func.isRequired,
-  setSlideSubject: PropTypes.func.isRequired,
+  openSubjectsModal: PropTypes.func.isRequired,
   columns: PropTypes.number.isRequired
 };
 

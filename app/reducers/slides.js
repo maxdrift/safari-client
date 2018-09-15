@@ -19,7 +19,8 @@ const slides = (state = initialState, action) => {
           width,
           height,
           alt: filename,
-          state: ExcludedState
+          state: ExcludedState,
+          subjectid: 0
         };
       });
       const newState = state.concat(newSlides);
@@ -62,11 +63,18 @@ const slides = (state = initialState, action) => {
             ? { ...slide, state: (slide.state + 1) % 3 }
             : slide
       );
-    case 'SET_SLIDE_SUBJECT':
+    case 'SET_STATE_TO_SELECTED_SLIDES':
       return state.map(
         slide =>
-          slide.id === action.id
-            ? { ...slide, subjectid: action.subjectid }
+          slide.selected
+            ? { ...slide, state: action.state, selected: false }
+            : slide
+      );
+    case 'SET_SLIDES_SUBJECT':
+      return state.map(
+        slide =>
+          action.ids.includes(slide.id)
+            ? { ...slide, subjectid: action.subjectid, selected: false }
             : slide
       );
     default:

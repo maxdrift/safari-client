@@ -35,10 +35,15 @@ export const toggleSlideState = id => ({
   id
 });
 
-export const setSlideSubject = (id, subjectid) => ({
-  type: 'SET_SLIDE_SUBJECT',
-  id,
+export const setSlidesSubject = (ids, subjectid) => ({
+  type: 'SET_SLIDES_SUBJECT',
+  ids,
   subjectid
+});
+
+export const setStateToSelectedSlides = state => ({
+  type: 'SET_STATE_TO_SELECTED_SLIDES',
+  state
 });
 
 export const slideStates = {
@@ -61,6 +66,10 @@ export const slideStates = {
     color: 'lime'
   }
 };
+
+export const slideStatesList = Object.keys(slideStates).map(
+  key => slideStates[key]
+);
 
 export const ExcludedState = 0;
 export const FixedState = 1;

@@ -5,9 +5,14 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
+import CloseIcon from '@material-ui/icons/Close';
+import DeleteIcon from '@material-ui/icons/Delete';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import { showSaveDialog } from '../dialogs';
+import SCStateMenu from './SCStateMenu';
 
 const appTitle = 'Safari Client';
 
@@ -25,29 +30,42 @@ const styles = theme => ({
 });
 
 const selectedSlidesCountLabel = count =>
-  count === 1 ? '1 slide selected' : `${count} slides selected`;
+  count === 1 ? '1 slide selezionata' : `${count} slide selezionate`;
 
 const SelectionControls = ({
   selectAllSlides,
-  deselectAllSlides,
+  setStateToSelectedSlides,
+  openSubjectsModal,
   removeSelectedSlides
 }) => (
   <div>
     <Button size="large" color="inherit" onClick={selectAllSlides}>
       Seleziona tutto
     </Button>
-    <Button size="large" color="inherit" onClick={deselectAllSlides}>
-      Deseleziona tutto
-    </Button>
-    <Button size="large" color="inherit" onClick={removeSelectedSlides}>
-      Elimina selezionate
-    </Button>
+    <SCStateMenu onClick={value => setStateToSelectedSlides(value)} />
+    <IconButton
+      color="inherit"
+      title="Seleziona una specie"
+      aria-label="Assign subject"
+      onClick={openSubjectsModal}
+    >
+      <LocalOfferIcon />
+    </IconButton>
+    <IconButton
+      color="inherit"
+      title="Rimuovi selezionate"
+      aria-label="Remove selected"
+      onClick={removeSelectedSlides}
+    >
+      <DeleteIcon />
+    </IconButton>
   </div>
 );
 
 SelectionControls.propTypes = {
   selectAllSlides: PropTypes.func.isRequired,
-  deselectAllSlides: PropTypes.func.isRequired,
+  setStateToSelectedSlides: PropTypes.func.isRequired,
+  openSubjectsModal: PropTypes.func.isRequired,
   removeSelectedSlides: PropTypes.func.isRequired
 };
 
@@ -57,25 +75,35 @@ const SCNavBar = props => {
     children,
     currentFilterState,
     hasSlides,
-    selectedSlideCount,
+    selectedSlideIds,
+    selectedSlidesCount,
     selectAllSlides,
+    openSubjectsModal,
     deselectAllSlides,
+    setStateToSelectedSlides,
     removeSelectedSlides,
     exportToCSV
   } = props;
-  const showExportButton = !hasSlides || selectedSlideCount === 0;
-  const showSelectionInfo = selectedSlideCount > 0;
+  const showExportButton = !hasSlides || selectedSlidesCount === 0;
+  const showSelectionInfo = selectedSlidesCount > 0;
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography
-            variant="headline"
-            color="inherit"
-            className={classes.flex}
-          >
+          {showSelectionInfo && (
+            <IconButton
+              color="inherit"
+              className={classes.button}
+              aria-label="Deselect all"
+              title="Annulla selezione"
+              onClick={() => deselectAllSlides(currentFilterState)}
+            >
+              <CloseIcon />
+            </IconButton>
+          )}
+          <Typography variant="title" color="inherit" className={classes.flex}>
             {showSelectionInfo
-              ? selectedSlidesCountLabel(selectedSlideCount)
+              ? selectedSlidesCountLabel(selectedSlidesCount)
               : appTitle}
           </Typography>
           {showExportButton ? (
@@ -93,7 +121,10 @@ const SCNavBar = props => {
           ) : (
             <SelectionControls
               selectAllSlides={() => selectAllSlides(currentFilterState)}
-              deselectAllSlides={() => deselectAllSlides(currentFilterState)}
+              setStateToSelectedSlides={setStateToSelectedSlides}
+              openSubjectsModal={() =>
+                openSubjectsModal(selectedSlideIds, null)
+              }
               removeSelectedSlides={removeSelectedSlides}
             />
           )}
@@ -109,11 +140,14 @@ SCNavBar.propTypes = {
   children: PropTypes.node.isRequired,
   currentFilterState: PropTypes.number.isRequired,
   hasSlides: PropTypes.bool.isRequired,
-  selectedSlideCount: PropTypes.number.isRequired,
+  selectedSlideIds: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedSlidesCount: PropTypes.number.isRequired,
   selectAllSlides: PropTypes.func.isRequired,
   deselectAllSlides: PropTypes.func.isRequired,
+  setStateToSelectedSlides: PropTypes.func.isRequired,
   removeSelectedSlides: PropTypes.func.isRequired,
-  exportToCSV: PropTypes.func.isRequired
+  exportToCSV: PropTypes.func.isRequired,
+  openSubjectsModal: PropTypes.func.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(SCNavBar);

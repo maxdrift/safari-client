@@ -4,7 +4,7 @@ import { addSlides } from '../actions/slides';
 
 const mapStateToProps = state => ({
   hasSlides: state.slides.length > 0,
-  selectedSlideCount: state.slides.filter(slide => slide.selected).length
+  selectedSlidesCount: state.slides.filter(slide => slide.selected).length
 });
 
 const mapDispatchToProps = dispatch => ({

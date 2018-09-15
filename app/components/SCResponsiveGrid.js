@@ -32,7 +32,7 @@ class SCResponsiveGrid extends Component {
   }
 
   render() {
-    const { classes, onFilesSelected, selectedSlideCount } = this.props;
+    const { classes, onFilesSelected, selectedSlidesCount } = this.props;
     const { width } = this.state;
     return (
       <Measure
@@ -58,7 +58,7 @@ class SCResponsiveGrid extends Component {
           return (
             <div ref={measureRef} className={classes.root}>
               <SCVisibleSlidesList columns={columns} />
-              {selectedSlideCount === 0 && (
+              {selectedSlidesCount === 0 && (
                 <Button
                   variant="extendedFab"
                   className={classes.button}
@@ -80,7 +80,7 @@ class SCResponsiveGrid extends Component {
 
 SCResponsiveGrid.propTypes = {
   classes: PropTypes.object.isRequired,
-  selectedSlideCount: PropTypes.number.isRequired,
+  selectedSlidesCount: PropTypes.number.isRequired,
   onFilesSelected: PropTypes.func.isRequired
 };
 

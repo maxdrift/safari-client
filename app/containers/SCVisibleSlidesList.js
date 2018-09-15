@@ -3,12 +3,12 @@ import {
   updateSlideIndex,
   toggleSlideSelected,
   toggleSlideState,
-  setSlideSubject,
   ExcludedState,
   FixedState,
   JuryState
 } from '../actions/slides';
 import { VisibilityFilters } from '../actions/visibilityFilter';
+import { openSubjectsModal } from '../actions/subjectsModal';
 import SCSortableSlidesList from '../components/SCSortableSlidesList';
 
 const getVisibleSlides = (slides, filter) => {
@@ -35,7 +35,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   toggleSlideSelected: id => dispatch(toggleSlideSelected(id)),
   toggleSlideState: id => dispatch(toggleSlideState(id)),
-  setSlideSubject: (id, subjectid) => dispatch(setSlideSubject(id, subjectid)),
+  openSubjectsModal: (ids, subjectid) =>
+    dispatch(openSubjectsModal(ids, subjectid)),
   onSortEnd: ({ oldIndex, newIndex }) =>
     dispatch(updateSlideIndex(oldIndex, newIndex))
 });

@@ -15,5 +15,7 @@
     "postinstall": "npm run electron-rebuild"
   },
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "typeface-roboto": "^0.0.54"
+  }
 }
