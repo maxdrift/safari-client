@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import { remote } from 'electron';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -13,6 +14,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import { showSaveDialog } from '../dialogs';
 import SCStateMenu from './SCStateMenu';
+
+const { dialog } = remote;
 
 const appTitle = 'Safari Client';
 
@@ -31,6 +34,17 @@ const styles = theme => ({
 
 const selectedSlidesCountLabel = count =>
   count === 1 ? '1 slide selezionata' : `${count} slide selezionate`;
+
+const handleDeleteButtonClick = callback => {
+  dialog.showMessageBox(
+    {
+      type: 'question',
+      message: 'Sei sicuro di voler eliminare le slide selezionate?',
+      buttons: ['Annulla', 'Elimina']
+    },
+    buttonId => buttonId === 1 && callback()
+  );
+};
 
 const SelectionControls = ({
   selectAllSlides,
@@ -55,7 +69,7 @@ const SelectionControls = ({
       color="inherit"
       title="Rimuovi selezionate"
       aria-label="Remove selected"
-      onClick={removeSelectedSlides}
+      onClick={() => handleDeleteButtonClick(removeSelectedSlides)}
     >
       <DeleteIcon />
     </IconButton>
