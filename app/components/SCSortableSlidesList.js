@@ -12,7 +12,14 @@ const styles = () => ({});
 
 const SCSortablePhoto = SortableElement(props => (
   <SCSelectedSlide {...props} index={props.i}>
-    <SCSlideOverlay {...props} />
+    <SCSlideOverlay
+      photoId={props.photo.id}
+      photoAlt={props.photo.alt}
+      photoState={props.photo.state}
+      photoSubjectId={props.photo.subjectid}
+      toggleSlideState={props.toggleSlideState}
+      openSubjectsModal={props.openSubjectsModal}
+    />
   </SCSelectedSlide>
 ));
 

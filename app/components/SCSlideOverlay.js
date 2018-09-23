@@ -21,7 +21,10 @@ const styles = theme => ({
 
 const SCSlideOverlay = ({
   classes,
-  photo,
+  photoId,
+  photoAlt,
+  photoState,
+  photoSubjectId,
   toggleSlideState,
   openSubjectsModal
 }) => (
@@ -33,21 +36,21 @@ const SCSlideOverlay = ({
         align="center"
         className={classes.title}
       >
-        {photo.alt}
+        {photoAlt}
       </Typography>
     </SCSlideHeader>
     <SCCorner
-      color={slideStates[photo.state].color}
-      altText={slideStates[photo.state].label}
-      onClick={() => toggleSlideState(photo.id)}
+      color={slideStates[photoState].color}
+      altText={slideStates[photoState].label}
+      onClick={() => toggleSlideState(photoId)}
     />
     <SCSlideFooter>
       <Button
         className={classes.label}
-        onClick={() => openSubjectsModal([photo.id], photo.subjectid)}
+        onClick={() => openSubjectsModal([photoId], photoSubjectId)}
       >
-        {photo.subjectid > 0
-          ? subjects[photo.subjectid].name
+        {photoSubjectId > 0
+          ? subjects[photoSubjectId].name
           : 'Seleziona una specie'}
       </Button>
     </SCSlideFooter>
@@ -57,11 +60,10 @@ const SCSlideOverlay = ({
 
 SCSlideOverlay.propTypes = {
   classes: PropTypes.object.isRequired,
-  photo: PropTypes.shape({
-    src: PropTypes.string,
-    width: PropTypes.number,
-    height: PropTypes.number
-  }).isRequired,
+  photoId: PropTypes.string.isRequired,
+  photoAlt: PropTypes.string.isRequired,
+  photoState: PropTypes.number.isRequired,
+  photoSubjectId: PropTypes.number.isRequired,
   toggleSlideState: PropTypes.func.isRequired,
   openSubjectsModal: PropTypes.func.isRequired
 };
