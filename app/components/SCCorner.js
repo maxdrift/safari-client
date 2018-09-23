@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = {
+const styles = () => ({
   root: {
     background: 'none',
     border: 'none',
@@ -14,7 +14,7 @@ const styles = {
     right: '0px',
     top: '0px'
   }
-};
+});
 
 const SCCorner = ({ classes, color, altText, onClick }) => (
   <button
@@ -53,4 +53,4 @@ SCCorner.propTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(SCCorner);
+export default withStyles(styles, { withTheme: true })(SCCorner);

@@ -42,7 +42,7 @@ class SCStateMenu extends Component {
     return (
       <div className={classes.root}>
         <Button
-          size="large"
+          size="medium"
           color="inherit"
           aria-owns={anchorEl ? 'slide-state-menu' : null}
           aria-haspopup="true"

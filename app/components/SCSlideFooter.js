@@ -2,9 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     backgroundImage:
       'linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5), rgba(0,0,0,0.8))',
@@ -16,23 +15,15 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  label: {
-    color: theme.palette.common.white
   }
 });
 
-const SCSlideFooter = ({ classes, onLabelClick, children }) => (
-  <div className={classes.root}>
-    <Button className={classes.label} onClick={onLabelClick}>
-      {children}
-    </Button>
-  </div>
+const SCSlideFooter = ({ classes, children }) => (
+  <div className={classes.root}>{children}</div>
 );
 
 SCSlideFooter.propTypes = {
   classes: PropTypes.object.isRequired,
-  onLabelClick: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired
 };
 

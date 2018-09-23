@@ -11,14 +11,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
 import { subjectsList } from '../reducers/subjects';
 
-const styles = {
+const styles = () => ({
   root: {},
   dialogPaper: {
     minHeight: '80vh',
     maxHeight: '80vh'
   },
   formContainer: {}
-};
+});
 
 class SCSubjectsModal extends Component {
   state = {
@@ -135,4 +135,4 @@ SCSubjectsModal.propTypes = {
   onAbortedSubject: PropTypes.func.isRequired
 };
 
-export default withStyles(styles)(SCSubjectsModal);
+export default withStyles(styles, { withTheme: true })(SCSubjectsModal);

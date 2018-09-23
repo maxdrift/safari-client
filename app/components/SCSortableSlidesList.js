@@ -1,11 +1,14 @@
 // @flow
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Gallery from 'react-photo-gallery';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import Lightbox from 'react-images';
 import SCSelectedSlide from './SCSelectedSlide';
 import SCSlideOverlay from './SCSlideOverlay';
+
+const styles = () => ({});
 
 const SCSortablePhoto = SortableElement(props => (
   <SCSelectedSlide {...props} index={props.i}>
@@ -113,4 +116,4 @@ SCSortableSlidesList.propTypes = {
   columns: PropTypes.number.isRequired
 };
 
-export default SCSortableSlidesList;
+export default withStyles(styles, { withTheme: true })(SCSortableSlidesList);

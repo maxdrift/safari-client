@@ -3,44 +3,30 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Measure from 'react-measure';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import AddToPhotos from '@material-ui/icons/AddToPhotos';
-import { showOpenDialog } from '../dialogs';
+import SCLoadSlidesButton from './SCLoadSlidesButton';
 import SCVisibleSlidesList from '../containers/SCVisibleSlidesList';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
+    marginTop: 114,
     marginBottom: 80
-  },
-  button: {
-    position: 'fixed',
-    bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 2,
-    margin: theme.spacing.unit
-  },
-  extendedIcon: {
-    marginRight: theme.spacing.unit
   }
 });
 
-const handleSlidesSelection = callback => showOpenDialog(callback);
-
 class SCResponsiveGrid extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { width: -1 };
-  }
+  state = {
+    width: -1
+  };
+
+  handleResize = contentRect => {
+    this.setState({ width: contentRect.bounds.width });
+  };
 
   render() {
     const { classes, onFilesSelected, selectedSlidesCount } = this.props;
     const { width } = this.state;
     return (
-      <Measure
-        bounds
-        onResize={contentRect =>
-          this.setState({ width: contentRect.bounds.width })
-        }
-      >
+      <Measure bounds onResize={this.handleResize}>
         {({ measureRef }) => {
           if (width < 1) {
             return <div ref={measureRef} />;
@@ -59,16 +45,10 @@ class SCResponsiveGrid extends Component {
             <div ref={measureRef} className={classes.root}>
               <SCVisibleSlidesList columns={columns} />
               {selectedSlidesCount === 0 && (
-                <Button
-                  variant="extendedFab"
-                  className={classes.button}
-                  color="secondary"
-                  aria-label="Load slides"
-                  onClick={() => handleSlidesSelection(onFilesSelected)}
-                >
-                  <AddToPhotos className={classes.extendedIcon} />
-                  Carica immagini
-                </Button>
+                <SCLoadSlidesButton
+                  text="Carica immagini"
+                  onClick={onFilesSelected}
+                />
               )}
             </div>
           );

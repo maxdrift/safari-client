@@ -1,8 +1,11 @@
 // @flow
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import SCResponsiveGrid from '../components/SCResponsiveGrid';
 import SCEmptySlidesView from '../components/SCEmptySlidesView';
+
+const styles = () => ({});
 
 const SCSlidesContainer = ({
   hasSlides,
@@ -27,4 +30,4 @@ SCSlidesContainer.propTypes = {
   onFilesSelected: PropTypes.func.isRequired
 };
 
-export default SCSlidesContainer;
+export default withStyles(styles, { withTheme: true })(SCSlidesContainer);

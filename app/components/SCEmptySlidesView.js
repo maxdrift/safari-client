@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import AddToPhotos from '@material-ui/icons/AddToPhotos';
-import { showOpenDialog } from '../dialogs';
+import SCLoadSlidesButton from './SCLoadSlidesButton';
 
 const styles = theme => ({
   root: {},
@@ -17,19 +15,8 @@ const styles = theme => ({
     top: theme.spacing.unit * 15,
     bottom: theme.spacing.unit * 10
   },
-  message: {},
-  button: {
-    position: 'absolute',
-    bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 2,
-    margin: theme.spacing.unit
-  },
-  extendedIcon: {
-    marginRight: theme.spacing.unit
-  }
+  message: {}
 });
-
-const handleSlidesSelection = callback => showOpenDialog(callback);
 
 const SCEmptySlidesView = ({ classes, onFilesSelected }) => (
   <div className={classes.root}>
@@ -49,16 +36,7 @@ const SCEmptySlidesView = ({ classes, onFilesSelected }) => (
         </Typography>
       </div>
     </Grid>
-    <Button
-      variant="extendedFab"
-      className={classes.button}
-      color="secondary"
-      aria-label="Load slides"
-      onClick={() => handleSlidesSelection(onFilesSelected)}
-    >
-      <AddToPhotos className={classes.extendedIcon} />
-      Carica immagini
-    </Button>
+    <SCLoadSlidesButton text="Carica immagini" onClick={onFilesSelected} />
   </div>
 );
 

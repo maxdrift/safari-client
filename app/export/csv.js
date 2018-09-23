@@ -1,29 +1,38 @@
 import stringify from 'csv-stringify';
+import { remote } from 'electron';
 import { ExcludedState, JuryState } from '../actions/slides';
 import { subjects } from '../reducers/subjects';
+
+const { dialog } = remote;
 
 const columns = ['file', 'jury', 'subj_id', 'subj_name', 'coeff'];
 
 const exportToCSV = (slides, callback) => {
-  const csvData = slides.reduce((acc, slide) => {
+  let csvData = [];
+  for (let i = 0; i < slides.length; i += 1) {
+    const slide = slides[i];
     if (slide.state > ExcludedState) {
+      if (!slide.subjectid || slide.subjectid === 0) {
+        dialog.showErrorBox(
+          'Impossibile exportare la scheda concorrente',
+          'Non a tutte le slide è stata assegnata una specie.'
+        );
+        csvData = null;
+        break;
+      }
       const juryMark = slide.state === JuryState ? 'X' : '';
       const subject = subjects[slide.subjectid];
-      return [
-        ...acc,
-        [slide.id, juryMark, subject.id, subject.name, subject.coeff]
-      ];
+      csvData.push([
+        slide.id,
+        juryMark,
+        subject.id,
+        subject.name,
+        subject.coeff
+      ]);
     }
-    return acc;
-  }, []);
+  }
 
-  stringify(
-    csvData,
-    {
-      columns
-    },
-    callback
-  );
+  if (csvData) stringify(csvData, { columns }, callback);
 };
 
 export default exportToCSV;

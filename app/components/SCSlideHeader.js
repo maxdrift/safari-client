@@ -2,9 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     backgroundImage:
       'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4), rgba(0,0,0,0))',
@@ -16,23 +15,11 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  title: {
-    color: theme.palette.common.white
   }
 });
 
 const SCSlideHeader = ({ classes, children }) => (
-  <div className={classes.root}>
-    <Typography
-      variant="subheading"
-      color="inherit"
-      align="center"
-      className={classes.title}
-    >
-      {children}
-    </Typography>
-  </div>
+  <div className={classes.root}>{children}</div>
 );
 
 SCSlideHeader.propTypes = {

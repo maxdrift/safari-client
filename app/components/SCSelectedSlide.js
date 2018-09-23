@@ -57,10 +57,10 @@ const SCSelectedSlide = ({
         />
       </a>
       {children}
-      <style>{`.not-selected:hover{outline:2px solid #06befa}`}</style>
-      <style>{`.not-selected:hover .slide-overlay{display:block}`}</style>
-      <style>{`.not-selected:hover .checkmark{display:block}`}</style>
-      <style>{`.selected .checkmark{display:block}`}</style>
+      <style>{'.not-selected:hover{outline:2px solid #06befa}'}</style>
+      <style>{'.not-selected:hover .slide-overlay{display:block}'}</style>
+      <style>{'.not-selected:hover .checkmark{display:block}'}</style>
+      <style>{'.selected .checkmark{display:block}'}</style>
     </div>
   );
 };
