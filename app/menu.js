@@ -48,26 +48,29 @@ export default class MenuBuilder {
       label: 'Safari Client',
       submenu: [
         {
-          label: `About Safari Client ${app.getVersion()}`,
+          label: `Info su Safari Client ${app.getVersion()}`,
           selector: 'orderFrontStandardAboutPanel:'
         },
         { type: 'separator' },
-        { label: 'Services', submenu: [] },
+        { label: 'Servizi', submenu: [] },
         { type: 'separator' },
         {
-          label: 'Hide Safari Client',
+          label: 'Nascondi Safari Client',
           accelerator: 'Command+H',
           selector: 'hide:'
         },
         {
-          label: 'Hide Others',
+          label: 'Nascondi Altri',
           accelerator: 'Command+Shift+H',
           selector: 'hideOtherApplications:'
         },
-        { label: 'Show All', selector: 'unhideAllApplications:' },
+        {
+          label: 'Mostra tutto',
+          selector: 'unhideAllApplications:'
+        },
         { type: 'separator' },
         {
-          label: 'Quit',
+          label: 'Chiudi',
           accelerator: 'Command+Q',
           click: () => {
             app.quit();
@@ -76,16 +79,17 @@ export default class MenuBuilder {
       ]
     };
     const subMenuEdit = {
-      label: 'Edit',
+      label: 'Modifica',
       submenu: [
-        { label: 'Undo', accelerator: 'Command+Z', selector: 'undo:' },
-        { label: 'Redo', accelerator: 'Shift+Command+Z', selector: 'redo:' },
-        { type: 'separator' },
-        // { label: 'Cut', accelerator: 'Command+X', selector: 'cut:' },
-        // { label: 'Copy', accelerator: 'Command+C', selector: 'copy:' },
-        // { label: 'Paste', accelerator: 'Command+V', selector: 'paste:' },
+        { label: 'Annulla', accelerator: 'Command+Z', selector: 'undo:' },
         {
-          label: 'Select All',
+          label: 'Ripristina',
+          accelerator: 'Shift+Command+Z',
+          selector: 'redo:'
+        },
+        { type: 'separator' },
+        {
+          label: 'Seleziona tutto',
           accelerator: 'Command+A',
           selector: 'selectAll:'
         }
@@ -118,10 +122,17 @@ export default class MenuBuilder {
       ]
     };
     const subMenuViewProd = {
-      label: 'View',
+      label: 'Vista',
       submenu: [
         {
-          label: 'Toggle Full Screen',
+          label: 'Ricarica',
+          accelerator: 'Command+R',
+          click: () => {
+            this.mainWindow.webContents.reload();
+          }
+        },
+        {
+          label: 'Attiva/Disattiva Schermo intero',
           accelerator: 'Ctrl+Command+F',
           click: () => {
             this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen());
@@ -130,22 +141,22 @@ export default class MenuBuilder {
       ]
     };
     const subMenuWindow = {
-      label: 'Window',
+      label: 'Finestra',
       submenu: [
         {
-          label: 'Minimize',
+          label: 'Minimizza',
           accelerator: 'Command+M',
           selector: 'performMiniaturize:'
         },
         { type: 'separator' },
-        { label: 'Bring All to Front', selector: 'arrangeInFront:' }
+        { label: 'Porta tutto in primo piano', selector: 'arrangeInFront:' }
       ]
     };
     const subMenuHelp = {
-      label: 'Help',
+      label: 'Aiuto',
       submenu: [
         {
-          label: 'Learn More',
+          label: 'Più informazioni',
           click() {
             shell.openExternal('https://github.com/maxdrift/safari-client');
           }
@@ -185,11 +196,11 @@ export default class MenuBuilder {
         label: '&File',
         submenu: [
           {
-            label: '&Open',
+            label: '&Apri',
             accelerator: 'Ctrl+O'
           },
           {
-            label: '&Quit',
+            label: '&Chiudi',
             accelerator: 'Alt+F4',
             click: () => {
               app.quit();
@@ -198,7 +209,7 @@ export default class MenuBuilder {
         ]
       },
       {
-        label: '&View',
+        label: '&Vista',
         submenu:
           process.env.NODE_ENV === 'development'
             ? [
@@ -228,21 +239,35 @@ export default class MenuBuilder {
               ]
             : [
                 {
-                  label: 'Toggle &Full Screen',
+                  label: '&Ricarica',
+                  accelerator: 'Ctrl+R',
+                  click: () => {
+                    this.mainWindow.webContents.reload();
+                  }
+                },
+                {
+                  label: 'Attiva/Disattiva Schermo intero',
                   accelerator: 'F11',
                   click: () => {
                     this.mainWindow.setFullScreen(
                       !this.mainWindow.isFullScreen()
                     );
                   }
+                },
+                {
+                  label: 'Toggle &Developer Tools',
+                  accelerator: 'Alt+Ctrl+I',
+                  click: () => {
+                    this.mainWindow.toggleDevTools();
+                  }
                 }
               ]
       },
       {
-        label: 'Help',
+        label: 'Aiuto',
         submenu: [
           {
-            label: 'Learn More',
+            label: 'Più informazioni',
             click() {
               shell.openExternal('https://github.com/maxdrift/safari-client');
             }
