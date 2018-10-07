@@ -11,7 +11,11 @@
  * @flow
  */
 import { app, BrowserWindow } from 'electron';
+import tempy from 'tempy';
+import path from 'path';
+import fs from 'fs';
 import MenuBuilder from './menu';
+import { appTmpFolder } from './constants';
 
 let mainWindow = null;
 
@@ -25,7 +29,6 @@ if (
   process.env.DEBUG_PROD === 'true'
 ) {
   require('electron-debug')();
-  const path = require('path');
   const p = path.join(__dirname, '..', 'app', 'node_modules');
   require('module').globalPaths.push(p);
 }
@@ -65,6 +68,18 @@ app.on('ready', async () => {
     require('update-electron-app')({
       logger: require('electron-log')
     });
+  }
+
+  let tmpDir = '';
+  if (process.env.NODE_ENV === 'production') {
+    tmpDir = appTmpFolder;
+  } else {
+    tmpDir = `${appTmpFolder}.dev`;
+  }
+  try {
+    fs.mkdirSync(path.join(tempy.root, tmpDir));
+  } catch (err) {
+    console.log(err);
   }
 
   mainWindow = new BrowserWindow({

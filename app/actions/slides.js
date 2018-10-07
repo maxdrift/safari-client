@@ -1,4 +1,36 @@
 // @flow
+import tempy from 'tempy';
+import path from 'path';
+import { generateThumbs } from '../thumbnails';
+import { appTmpFolder } from '../constants';
+
+export const addSlidesAsync = paths => dispatch => {
+  let tmpDir = '';
+  if (process.env.NODE_ENV === 'production') {
+    tmpDir = path.join(tempy.root, appTmpFolder);
+  } else {
+    tmpDir = path.join(tempy.root, `${appTmpFolder}.dev`);
+  }
+  console.log('Temp directory:', tmpDir);
+  paths.forEach(filePath =>
+    generateThumbs(filePath, tmpDir).then(srcSet =>
+      dispatch(
+        addSlides([
+          {
+            src: filePath,
+            srcSet,
+            sizes: [
+              '(min-width: 30em) 50vw',
+              '(min-width: 64em) 33.3vw',
+              '(min-width: 114em) 25vw',
+              '100vw'
+            ]
+          }
+        ])
+      )
+    )
+  );
+};
 
 export const addSlides = paths => ({
   type: 'ADD_SLIDES',

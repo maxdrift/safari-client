@@ -1,20 +1,25 @@
 // @flow
+/* eslint no-unused-expressions: ["error", { "allowShortCircuit": true }] */
 import path from 'path';
 import sizeOf from 'image-size';
 import { arrayMove } from 'react-sortable-hoc';
 import { ExcludedState } from '../actions/slides';
+import { removeThumbs } from '../thumbnails';
 
 const initialState = [];
 
 const slides = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_SLIDES': {
-      const newSlides = action.paths.map(slidePath => {
-        const filename = path.basename(slidePath);
-        const { width, height } = sizeOf(slidePath);
+      const newSlides = action.paths.map(pathSet => {
+        const { src, srcSet, sizes } = pathSet;
+        const filename = path.basename(src);
+        const { width, height } = sizeOf(src);
         return {
           id: filename,
-          src: slidePath,
+          src,
+          srcSet,
+          sizes,
           selected: false,
           width,
           height,
@@ -32,7 +37,10 @@ const slides = (state = initialState, action) => {
       return Object.keys(uniqueSlides).map(key => uniqueSlides[key]);
     }
     case 'REMOVE_SELECTED_SLIDES':
-      return state.filter(slide => !slide.selected);
+      return state.filter(slide => {
+        slide.selected && removeThumbs(slide.srcSet);
+        return !slide.selected;
+      });
     case 'UPDATE_SLIDE_INDEX':
       return arrayMove(state, action.oldIndex, action.newIndex);
     case 'TOGGLE_SLIDE_SELECTED':

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SCSlidesContainer from '../components/SCSlidesContainer';
-import { addSlides } from '../actions/slides';
+import { addSlidesAsync } from '../actions/slides';
 
 const mapStateToProps = state => ({
   hasSlides: state.slides.length > 0,
@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onFilesSelected: paths => dispatch(addSlides(paths))
+  onFilesSelected: paths => dispatch(addSlidesAsync(paths))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SCSlidesContainer);
