@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Gallery from 'react-photo-gallery';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
-import Lightbox from 'react-images';
+import Viewer from 'react-viewer';
 import SCSelectedSlide from './SCSelectedSlide';
 import SCSlideOverlay from './SCSlideOverlay';
 
@@ -78,13 +78,15 @@ class SCGallery extends Component {
             />
           )}
         />
-        <Lightbox
-          images={slides}
+        <Viewer
+          zIndex={10000}
+          visible={this.state.lightboxIsOpen}
           onClose={this.closeLightbox}
-          onClickPrev={this.gotoPrevious}
-          onClickNext={this.gotoNext}
-          currentImage={this.state.currentImage}
-          isOpen={this.state.lightboxIsOpen}
+          onMaskClick={this.closeLightbox}
+          images={slides}
+          activeIndex={this.state.currentImage}
+          zoomSpeed="0.1"
+          noNavbar
         />
       </div>
     );

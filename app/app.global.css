@@ -3,3 +3,18 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 @import '~typeface-roboto';
+@import '~react-viewer/dist/index.css';
+
+.react-viewer-mask {
+  background-color: rgb(0, 0, 0);
+}
+
+.react-viewer-attribute {
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.react-viewer-img-details {
+  margin-left: 0.5em;
+}
