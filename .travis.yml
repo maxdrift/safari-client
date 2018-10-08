@@ -26,7 +26,7 @@ script:
       -v ~/.cache/electron:/root/.cache/electron \
       -v ~/.cache/electron-builder:/root/.cache/electron-builder \
       electronuserland/builder:wine-mono \
-      /bin/bash -c "yarn --link-duplicates --pure-lockfile && yarn package --linux --win --publish onTagOrDraft"
+      /bin/bash -c "yarn --link-duplicates --pure-lockfile && yarn package --linux --publish onTagOrDraft"
   else
     yarn package --publish onTagOrDraft
   fi
