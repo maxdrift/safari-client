@@ -1,10 +1,14 @@
 // @flow
+import { remote } from 'electron';
 import tempy from 'tempy';
 import path from 'path';
 import { generateThumbs } from '../thumbnails';
 import { appTmpFolder } from '../constants';
 
+const trackEvent = remote.getGlobal('trackEvent');
+
 export const addSlidesAsync = paths => dispatch => {
+  trackEvent('App', 'addSlides', `${paths.length}`);
   let tmpDir = '';
   if (process.env.NODE_ENV === 'production') {
     tmpDir = path.join(tempy.root, appTmpFolder);
@@ -37,9 +41,12 @@ export const addSlides = paths => ({
   paths
 });
 
-export const removeSelectedSlides = () => ({
-  type: 'REMOVE_SELECTED_SLIDES'
-});
+export const removeSelectedSlides = () => {
+  trackEvent('App', 'removeSelectedSlides');
+  return {
+    type: 'REMOVE_SELECTED_SLIDES'
+  };
+};
 
 export const updateSlideIndex = (oldIndex, newIndex) => ({
   type: 'UPDATE_SLIDE_INDEX',

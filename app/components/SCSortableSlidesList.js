@@ -1,4 +1,5 @@
 // @flow
+import { remote } from 'electron';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -7,6 +8,8 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import Viewer from 'react-viewer';
 import SCSelectedSlide from './SCSelectedSlide';
 import SCSlideOverlay from './SCSlideOverlay';
+
+const trackScreenview = remote.getGlobal('trackScreenview');
 
 const styles = () => ({});
 
@@ -33,12 +36,14 @@ class SCGallery extends Component {
     this.gotoPrevious = this.gotoPrevious.bind(this);
   }
   openLightbox(event, obj) {
+    trackScreenview('Lightbox', 'Safari Client');
     this.setState({
       currentImage: obj.index,
       lightboxIsOpen: true
     });
   }
   closeLightbox() {
+    trackScreenview('Slides list', 'Safari Client');
     this.setState({
       currentImage: 0,
       lightboxIsOpen: false

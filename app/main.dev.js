@@ -82,6 +82,13 @@ app.on('ready', async () => {
     console.log(err);
   }
 
+  const { trackEvent, trackScreenview } = require('./analytics');
+
+  global.trackEvent = trackEvent;
+  global.trackScreenview = trackScreenview;
+
+  trackEvent('App', 'newWindow');
+
   mainWindow = new BrowserWindow({
     nodeIntegration: false,
     show: false,
