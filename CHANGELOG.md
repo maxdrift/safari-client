@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.0.7
+- Improve tracking
+- Implement check for orphan images at startup
+
 ### 0.0.6
 - Add more metrics
 
