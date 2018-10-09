@@ -1,5 +1,8 @@
 ## Changelog
 
+### 0.0.6
+- Add more metrics
+
 ### 0.0.5
 - Delegate win build to appveyor
 - Add Google Analytics support
