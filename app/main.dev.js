@@ -17,9 +17,7 @@ import fs from 'fs';
 import unhandled from 'electron-unhandled';
 import ga from './analytics';
 import MenuBuilder from './menu';
-import { appTmpFolder, appName } from './constants';
-
-global.ga = ga;
+import { appTmpFolder, appName, appId } from './constants';
 
 unhandled({
   logger: err => {
@@ -96,13 +94,16 @@ app.on('ready', async () => {
 
   const { width, height } = screen.getPrimaryDisplay().size;
   ga.set('screenResolution', `${width}x${height}`);
+  ga.set('appId', appId);
   ga.set('appName', appName);
   ga.set(
     'appVersion',
     process.env.NODE_ENV === 'production' ? app.getVersion() : 'dev'
   );
   ga.set('language', app.getLocale);
-  ga.screenview('Home').send();
+  ga.screenview('Home', appName).send();
+
+  global.ga = ga;
 
   mainWindow = new BrowserWindow({
     nodeIntegration: false,

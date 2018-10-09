@@ -11,7 +11,7 @@ const ga = remote.getGlobal('ga');
 
 unhandled({
   logger: err => {
-    ga.exception(err.toString(), true).send();
+    ga.exception(err.toString()).send();
     console.error('Unhandled error:', err);
   }
 });

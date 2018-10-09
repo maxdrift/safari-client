@@ -1,10 +1,17 @@
 // @flow
+import { remote } from 'electron';
 import { ExcludedState, FixedState, JuryState } from './slides';
+import { appName } from '../constants';
 
-export const setVisibilityFilter = filter => ({
-  type: 'SET_VISIBILITY_FILTER',
-  filter
-});
+const ga = remote.getGlobal('ga');
+
+export const setVisibilityFilter = filter => {
+  ga.screenview(filter, appName).send();
+  return {
+    type: 'SET_VISIBILITY_FILTER',
+    filter
+  };
+};
 
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',

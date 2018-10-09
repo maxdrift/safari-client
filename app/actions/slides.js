@@ -8,7 +8,7 @@ import { appTmpFolder } from '../constants';
 const ga = remote.getGlobal('ga');
 
 export const addSlidesAsync = paths => dispatch => {
-  ga.event('App', 'add slides', `${paths.length}`).send();
+  ga.event('Slides', 'add async', `${paths.length}`).send();
   let tmpDir = '';
   if (process.env.NODE_ENV === 'production') {
     tmpDir = path.join(tempy.root, appTmpFolder);
@@ -42,48 +42,69 @@ export const addSlides = paths => ({
 });
 
 export const removeSelectedSlides = () => {
-  ga.event('App', 'remove selected slides').send();
+  ga.event('Slides', 'remove selected').send();
   return {
     type: 'REMOVE_SELECTED_SLIDES'
   };
 };
 
-export const updateSlideIndex = (oldIndex, newIndex) => ({
-  type: 'UPDATE_SLIDE_INDEX',
-  oldIndex,
-  newIndex
-});
+export const updateSlideIndex = (oldIndex, newIndex) => {
+  ga.event('Slides', 'update index').send();
+  return {
+    type: 'UPDATE_SLIDE_INDEX',
+    oldIndex,
+    newIndex
+  };
+};
 
-export const toggleSlideSelected = id => ({
-  type: 'TOGGLE_SLIDE_SELECTED',
-  id
-});
+export const toggleSlideSelected = id => {
+  ga.event('Slides', 'toggle selected').send();
+  return {
+    type: 'TOGGLE_SLIDE_SELECTED',
+    id
+  };
+};
 
-export const selectAllSlides = filter => ({
-  type: 'SELECT_ALL_SLIDES',
-  filter
-});
+export const selectAllSlides = filter => {
+  ga.event('Slides', 'select all').send();
+  return {
+    type: 'SELECT_ALL_SLIDES',
+    filter
+  };
+};
 
-export const deselectAllSlides = filter => ({
-  type: 'DESELECT_ALL_SLIDES',
-  filter
-});
+export const deselectAllSlides = filter => {
+  ga.event('Slides', 'deselect all').send();
+  return {
+    type: 'DESELECT_ALL_SLIDES',
+    filter
+  };
+};
 
-export const toggleSlideState = id => ({
-  type: 'TOGGLE_SLIDE_STATE',
-  id
-});
+export const toggleSlideState = id => {
+  ga.event('Slides', 'toggle state').send();
+  return {
+    type: 'TOGGLE_SLIDE_STATE',
+    id
+  };
+};
 
-export const setSlidesSubject = (ids, subjectid) => ({
-  type: 'SET_SLIDES_SUBJECT',
-  ids,
-  subjectid
-});
+export const setSlidesSubject = (ids, subjectid) => {
+  ga.event('Slides', 'set subject', '', subjectid).send();
+  return {
+    type: 'SET_SLIDES_SUBJECT',
+    ids,
+    subjectid
+  };
+};
 
-export const setStateToSelectedSlides = state => ({
-  type: 'SET_STATE_TO_SELECTED_SLIDES',
-  state
-});
+export const setStateToSelectedSlides = state => {
+  ga.event('Slides', 'set state to selected', '', state).send();
+  return {
+    type: 'SET_STATE_TO_SELECTED_SLIDES',
+    state
+  };
+};
 
 export const slideStates = {
   0: {
