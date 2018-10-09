@@ -5,9 +5,12 @@ import { subjects } from '../reducers/subjects';
 
 const { dialog } = remote;
 
+const ga = remote.getGlobal('ga');
+
 const columns = ['file', 'jury', 'subj_id', 'subj_name', 'coeff'];
 
 const exportToCSV = (slides, callback) => {
+  ga.event('App', 'export to csv').send();
   let csvData = [];
   for (let i = 0; i < slides.length; i += 1) {
     const slide = slides[i];

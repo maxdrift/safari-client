@@ -1,12 +1,12 @@
 import { remote } from 'electron';
 import { VisibilityFilters } from '../actions/visibilityFilter';
 
-const trackScreenview = remote.getGlobal('trackScreenview');
+const ga = remote.getGlobal('ga');
 
 const visibilityFilter = (state = VisibilityFilters.SHOW_ALL, action) => {
   switch (action.type) {
     case 'SET_VISIBILITY_FILTER': {
-      trackScreenview(`${action.filter}`, 'Safari Client');
+      ga.screenview(`${action.filter}`, 'Safari Client').send();
       return action.filter;
     }
     default:

@@ -9,7 +9,7 @@ import Viewer from 'react-viewer';
 import SCSelectedSlide from './SCSelectedSlide';
 import SCSlideOverlay from './SCSlideOverlay';
 
-const trackScreenview = remote.getGlobal('trackScreenview');
+const ga = remote.getGlobal('ga');
 
 const styles = () => ({});
 
@@ -36,14 +36,14 @@ class SCGallery extends Component {
     this.gotoPrevious = this.gotoPrevious.bind(this);
   }
   openLightbox(event, obj) {
-    trackScreenview('Lightbox', 'Safari Client');
+    ga.screenview('Lightbox', 'Safari Client').send();
     this.setState({
       currentImage: obj.index,
       lightboxIsOpen: true
     });
   }
   closeLightbox() {
-    trackScreenview('Slides list', 'Safari Client');
+    ga.screenview('Slides list', 'Safari Client').send();
     this.setState({
       currentImage: 0,
       lightboxIsOpen: false

@@ -5,10 +5,10 @@ import path from 'path';
 import { generateThumbs } from '../thumbnails';
 import { appTmpFolder } from '../constants';
 
-const trackEvent = remote.getGlobal('trackEvent');
+const ga = remote.getGlobal('ga');
 
 export const addSlidesAsync = paths => dispatch => {
-  trackEvent('App', 'addSlides', `${paths.length}`);
+  ga.event('App', 'add slides', `${paths.length}`).send();
   let tmpDir = '';
   if (process.env.NODE_ENV === 'production') {
     tmpDir = path.join(tempy.root, appTmpFolder);
@@ -42,7 +42,7 @@ export const addSlides = paths => ({
 });
 
 export const removeSelectedSlides = () => {
-  trackEvent('App', 'removeSelectedSlides');
+  ga.event('App', 'remove selected slides').send();
   return {
     type: 'REMOVE_SELECTED_SLIDES'
   };

@@ -10,12 +10,23 @@
  *
  * @flow
  */
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, screen } from 'electron';
 import tempy from 'tempy';
 import path from 'path';
 import fs from 'fs';
+import unhandled from 'electron-unhandled';
+import ga from './analytics';
 import MenuBuilder from './menu';
-import { appTmpFolder } from './constants';
+import { appTmpFolder, appName } from './constants';
+
+global.ga = ga;
+
+unhandled({
+  logger: err => {
+    ga.exception(err.toString(), true).send();
+    console.error('Unhandled error:', err);
+  }
+});
 
 let mainWindow = null;
 
@@ -76,18 +87,22 @@ app.on('ready', async () => {
   } else {
     tmpDir = `${appTmpFolder}.dev`;
   }
-  try {
-    fs.mkdirSync(path.join(tempy.root, tmpDir));
-  } catch (err) {
-    console.log(err);
+  const tmpPath = path.join(tempy.root, tmpDir);
+  if (!fs.existsSync(tmpPath)) {
+    fs.mkdirSync(tmpPath);
+  } else {
+    console.log(`Temp directory ${tmpPath} already exists. Skipping...`);
   }
 
-  const { trackEvent, trackScreenview } = require('./analytics');
-
-  global.trackEvent = trackEvent;
-  global.trackScreenview = trackScreenview;
-
-  trackEvent('App', 'newWindow');
+  const { width, height } = screen.getPrimaryDisplay().size;
+  ga.set('screenResolution', `${width}x${height}`);
+  ga.set('appName', appName);
+  ga.set(
+    'appVersion',
+    process.env.NODE_ENV === 'production' ? app.getVersion() : 'dev'
+  );
+  ga.set('language', app.getLocale);
+  ga.screenview('Home').send();
 
   mainWindow = new BrowserWindow({
     nodeIntegration: false,
