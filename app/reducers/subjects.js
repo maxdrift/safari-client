@@ -1,38 +1,18 @@
 export const subjects = {
-  0: {
-    id: 0,
-    name: 'Rimuovi specie',
-    sci_name: '',
-    coeff: null
-  },
-  1: {
-    id: 1,
-    name: 'ACCIUGA',
-    sci_name: 'Engraulis encrasicholus',
-    coeff: 6
-  },
-  2: {
-    id: 2,
-    name: 'AGUGLIA ',
-    sci_name: 'Belone belone',
-    coeff: 6
-  },
-  3: {
-    id: 3,
-    name: 'ANGUILLA',
-    sci_name: 'Anguilla anguilla',
-    coeff: 2
-  },
+  0: { id: 0, name: 'Rimuovi specie', sci_name: '', coeff: null },
+  1: { id: 1, name: 'ACCIUGA', sci_name: 'Engraulis encrasicolus', coeff: 6 },
+  2: { id: 2, name: 'AGUGLIA', sci_name: 'Belone belone', coeff: 6 },
+  3: { id: 3, name: 'ANGUILLA', sci_name: 'Anguilla anguilla', coeff: 2 },
   4: {
     id: 4,
     name: 'BAVOSA ADRIATICA',
-    sci_name: 'Lipophrys adriaticus',
+    sci_name: 'Microlipophrys adriaticus',
     coeff: 2
   },
   5: {
     id: 5,
     name: 'BAVOSA BASILISCO',
-    sci_name: 'Lipophrys basiliscus',
+    sci_name: 'Salaria basilisca',
     coeff: 2
   },
   6: { id: 6, name: 'BAVOSA BIANCA', sci_name: 'Parablennius rouxi', coeff: 2 },
@@ -63,7 +43,7 @@ export const subjects = {
   11: {
     id: 11,
     name: 'BAVOSA DALMATA',
-    sci_name: 'Lipophrys dalmatinus',
+    sci_name: 'Microlipophrys dalmatinus',
     coeff: 2
   },
   12: {
@@ -75,7 +55,7 @@ export const subjects = {
   13: {
     id: 13,
     name: 'BAVOSA GOTE GIALLE',
-    sci_name: 'Lipophrys canevai',
+    sci_name: 'Microlipophrys canevae',
     coeff: 2
   },
   14: {
@@ -84,11 +64,11 @@ export const subjects = {
     sci_name: 'Blennius ocellaris',
     coeff: 2
   },
-  15: { id: 15, name: 'BAVOSA PAVONE', sci_name: 'Lipophrys pavo', coeff: 2 },
+  15: { id: 15, name: 'BAVOSA PAVONE', sci_name: 'Salaria pavo', coeff: 2 },
   16: {
     id: 16,
-    name: 'BAVOSA PILICORNIS',
-    sci_name: 'Blennius pilicornis',
+    name: 'BAVOSA AFRICANA',
+    sci_name: 'Parablennius pilicornis',
     coeff: 2
   },
   17: {
@@ -100,7 +80,7 @@ export const subjects = {
   18: {
     id: 18,
     name: 'BAVOSA ROSSA',
-    sci_name: 'Lipophrys nigriceps',
+    sci_name: 'Microlipophrys nigriceps',
     coeff: 2
   },
   19: {
@@ -152,7 +132,7 @@ export const subjects = {
   },
   31: {
     id: 31,
-    name: 'CAV. MARINO CAMUSO',
+    name: 'CAV.MARINO CAMUSO',
     sci_name: 'Hippocampus hippocampus',
     coeff: 2
   },
@@ -185,59 +165,49 @@ export const subjects = {
   38: {
     id: 38,
     name: 'CICERELLO',
-    sci_name: 'Gymnammodytes cicerellus',
+    sci_name: 'Gymnammodytes cicerelus',
     coeff: 6
   },
   39: { id: 39, name: 'CORVINA', sci_name: 'Sciaena umbra', coeff: 6 },
-  40: { id: 40, name: 'COSTARDELLA', sci_name: 'Scomberesox saurus', coeff: 6 },
+  40: { id: 40, name: 'NUOVA SPECIE A', sci_name: 'non in elenco', coeff: 6 },
   41: { id: 41, name: 'DENTICE', sci_name: 'Dentex dentex', coeff: 6 },
-  42: {
-    id: 42,
-    name: 'DENTICE CORAZZIERE',
-    sci_name: 'Dentex gibbosus',
-    coeff: 6
-  },
-  43: { id: 43, name: 'DONZELLA', sci_name: 'Coris julis', coeff: 4 },
-  44: {
-    id: 44,
+  42: { id: 42, name: 'DONZELLA', sci_name: 'Coris julis', coeff: 4 },
+  43: {
+    id: 43,
     name: 'DONZELLA  PAVONINA',
     sci_name: 'Thalassoma pavo',
     coeff: 4
   },
-  45: { id: 45, name: 'DRAGONCELLO', sci_name: 'Callionymus sp.', coeff: 2 },
-  46: { id: 46, name: 'GALLETTO', sci_name: 'Ophidion barbatum', coeff: 6 },
-  47: {
-    id: 47,
-    name: 'GATTUCCIO',
-    sci_name: 'Scyliorhinus canicula',
+  44: { id: 44, name: 'DRAGONCELLO', sci_name: 'Callionymus sp.', coeff: 2 },
+  45: { id: 45, name: 'GALLETTO', sci_name: 'Ophidion barbatum', coeff: 6 },
+  46: {
+    id: 46,
+    name: 'GHIOZZO DI FERRER',
+    sci_name: 'Pseudaphya ferreri',
     coeff: 2
   },
-  48: { id: 48, name: 'GHIOZZETTO', sci_name: 'Pomatoschistus sp.', coeff: 2 },
-  49: {
-    id: 49,
-    name: 'GH.TTO GROSSE SQUAME',
-    sci_name: 'Lesueurigobius sp.',
+  47: { id: 47, name: 'GHIOZZETTO', sci_name: 'Pomatoschistus sp.', coeff: 2 },
+  48: {
+    id: 48,
+    name: 'GHIOZZETTO QUAGGA',
+    sci_name: 'Pomatoschistus quagga',
     coeff: 2
   },
+  49: { id: 49, name: 'GHIOZZO', sci_name: 'GOBIIDAE fam.', coeff: 2 },
   50: {
     id: 50,
-    name: 'GH.TTO LAGUNARE',
-    sci_name: 'Knipowitschia panizzae',
-    coeff: 2
-  },
-  51: {
-    id: 51,
     name: 'GHIOZZO BOCCAROSSA',
     sci_name: 'Gobius cruentatus',
     coeff: 2
   },
+  51: { id: 51, name: 'GHIOZZO FALLACE', sci_name: 'Gobius fallax', coeff: 2 },
   52: {
     id: 52,
     name: 'GHIOZZO GENIPORO',
     sci_name: 'Gobius geniporus',
     coeff: 2
   },
-  53: { id: 53, name: 'GHIOZZO GIALLO', sci_name: 'Gobius luteus', coeff: 2 },
+  53: { id: 53, name: 'GHIOZZO DORATO', sci_name: 'Gobius auratus', coeff: 2 },
   54: {
     id: 54,
     name: "GHIOZZO GO'",
@@ -256,7 +226,12 @@ export const subjects = {
     sci_name: 'Gobius vittatus',
     coeff: 2
   },
-  57: { id: 57, name: 'GHIOZZO NERO', sci_name: 'Gobius niger', coeff: 2 },
+  57: {
+    id: 57,
+    name: 'GHIOZZO NERO/ VARIEGATO',
+    sci_name: 'Gobius niger / roulei',
+    coeff: 2
+  },
   58: {
     id: 58,
     name: 'GHIOZZO PAGANELLO',
@@ -266,7 +241,7 @@ export const subjects = {
   59: {
     id: 59,
     name: 'GHIOZZO RASPOSO',
-    sci_name: 'Gobius bucchichi',
+    sci_name: 'Gobius incognitus',
     coeff: 2
   },
   60: { id: 60, name: 'GHIOZZO TESTONE', sci_name: 'Gobius cobitis', coeff: 2 },
@@ -293,13 +268,13 @@ export const subjects = {
     sci_name: 'Trachinotus ovatus',
     coeff: 6
   },
-  69: {
-    id: 69,
-    name: 'LUCCIO MARINO',
-    sci_name: 'Sphyraena sphyraena',
+  69: { id: 69, name: 'LUCCIO MARINO', sci_name: 'Sphyraena sp.', coeff: 6 },
+  70: {
+    id: 70,
+    name: 'MENNOLA / GARIZZO',
+    sci_name: 'Spicara maena',
     coeff: 6
   },
-  70: { id: 70, name: 'MENNOLA', sci_name: 'Spicara maena', coeff: 6 },
   71: { id: 71, name: 'MERLUZZO', sci_name: 'Trisopterus sp.', coeff: 6 },
   72: { id: 72, name: 'MIRO', sci_name: 'Echelus myrus', coeff: 2 },
   73: { id: 73, name: 'MORMORA', sci_name: 'Lithognatus mormyrus', coeff: 6 },
@@ -316,194 +291,214 @@ export const subjects = {
     coeff: 6
   },
   76: { id: 76, name: 'MURENA', sci_name: 'Muraena helena', coeff: 2 },
-  77: { id: 77, name: 'MUSDEA', sci_name: 'Phycis phycis', coeff: 2 },
-  78: { id: 78, name: 'NASELLO', sci_name: 'Merluccius merluccius', coeff: 6 },
-  79: { id: 79, name: 'NONO', sci_name: 'Aphanius fasciatus', coeff: 6 },
-  80: { id: 80, name: 'OCCHIATA', sci_name: 'Oblada melanura', coeff: 6 },
-  81: { id: 81, name: 'OMBRINA', sci_name: 'Umbrina cirrosa', coeff: 6 },
-  82: { id: 82, name: 'ORATA', sci_name: 'Sparus aurata', coeff: 6 },
-  83: {
-    id: 83,
+  77: {
+    id: 77,
+    name: 'MURENA NERA',
+    sci_name: 'Gymnothorax unicolor',
+    coeff: 2
+  },
+  78: { id: 78, name: 'MUSDEA', sci_name: 'Phycis phycis', coeff: 2 },
+  79: { id: 79, name: 'NASELLO', sci_name: 'Merluccius merluccius', coeff: 6 },
+  80: { id: 80, name: 'NONO', sci_name: 'Aphanius fasciatus', coeff: 6 },
+  81: { id: 81, name: 'OCCHIATA', sci_name: 'Oblada melanura', coeff: 6 },
+  82: { id: 82, name: 'OMBRINA', sci_name: 'Umbrina cirrosa', coeff: 6 },
+  83: { id: 83, name: 'ORATA', sci_name: 'Sparus aurata', coeff: 6 },
+  84: {
+    id: 84,
     name: 'PAGELLO BASTARDO',
     sci_name: 'Pagellus acarne',
     coeff: 6
   },
-  84: {
-    id: 84,
+  85: {
+    id: 85,
     name: 'PAGELLO FRAGOLINO',
     sci_name: 'Pagellus erythrinus',
     coeff: 6
   },
-  85: { id: 85, name: 'PAGRO', sci_name: 'Pagrus sp.', coeff: 6 },
-  86: { id: 86, name: 'PALAMITA', sci_name: 'Sarda sarda', coeff: 6 },
-  87: { id: 87, name: 'PALOMBO', sci_name: 'TRIAKIDAE fam.', coeff: 6 },
-  88: {
-    id: 88,
-    name: 'PASSERA DI MARE',
-    sci_name: 'Platichthys flesus',
-    coeff: 2
-  },
-  89: {
-    id: 89,
-    name: 'PEPERONCINO',
-    sci_name: 'Tripterygion tripteronotus',
-    coeff: 2
-  },
+  86: { id: 86, name: 'PAGRO', sci_name: 'Pagrus sp.', coeff: 6 },
+  87: { id: 87, name: 'PALAMITA', sci_name: 'Sarda sarda', coeff: 6 },
+  88: { id: 88, name: 'PALOMBO', sci_name: 'TRIAKIDAE fam.', coeff: 6 },
+  89: { id: 89, name: 'PASSERA', sci_name: 'PLEURONECTIDAE fam.', coeff: 2 },
   90: {
     id: 90,
-    name: 'PEPERONCINO GIALLO',
-    sci_name: 'Tripterygion xanthosoma',
+    name: 'PEPERONCINO',
+    sci_name: 'Tripterygion tripteronotum',
     coeff: 2
   },
   91: {
     id: 91,
-    name: 'PEPERONCINO MINORE',
-    sci_name: 'Tripterygion melanurus',
+    name: 'PEPERONCINO GIALLO',
+    sci_name: 'Tripterygion delaisi',
     coeff: 2
   },
-  92: { id: 92, name: 'PERCHIA', sci_name: 'Serranus cabrilla', coeff: 4 },
-  93: { id: 93, name: 'PESCE AGO', sci_name: 'Syngnathus acus', coeff: 2 },
-  94: {
-    id: 94,
+  92: {
+    id: 92,
+    name: 'PEPERONCINO MINORE',
+    sci_name: 'Tripterygion melanurum',
+    coeff: 2
+  },
+  93: { id: 93, name: 'PERCHIA', sci_name: 'Serranus cabrilla', coeff: 4 },
+  94: { id: 94, name: 'PESCE AGO', sci_name: 'Syngnathus acus', coeff: 2 },
+  95: {
+    id: 95,
     name: 'PESCE AGO CAVALLINO',
     sci_name: 'Syngnathus typhle',
     coeff: 2
   },
-  95: {
-    id: 95,
+  96: {
+    id: 96,
     name: 'PESCE AGO SOTTILE',
     sci_name: 'Nerophis ophidion',
     coeff: 2
   },
-  96: {
-    id: 96,
+  97: {
+    id: 97,
     name: 'PESCE BALESTRA',
     sci_name: 'Balistes capriscus',
     coeff: 6
   },
-  97: { id: 97, name: 'PESCE CHITARRA', sci_name: 'Rhinobatos sp.', coeff: 2 },
-  98: {
-    id: 98,
+  98: { id: 98, name: 'PESCE CHITARRA', sci_name: 'Rhinobatos sp.', coeff: 2 },
+  99: {
+    id: 99,
     name: 'PESCE CIVETTA',
     sci_name: 'Dactylopterus volitans',
     coeff: 4
   },
-  99: { id: 99, name: 'PESCE LUCERTOLA', sci_name: 'Synodus saurus', coeff: 2 },
-  100: { id: 100, name: 'PESCE LUNA', sci_name: 'Mola mola', coeff: 6 },
-  101: {
-    id: 101,
+  100: {
+    id: 100,
+    name: 'PESCE LUCERTOLA',
+    sci_name: 'Synodus saurus',
+    coeff: 2
+  },
+  101: { id: 101, name: 'PESCE LUNA', sci_name: 'Mola mola', coeff: 6 },
+  102: {
+    id: 102,
     name: 'PESCE PAPPAGALLO',
     sci_name: 'Sparisoma cretense',
     coeff: 6
   },
-  102: {
-    id: 102,
+  103: {
+    id: 103,
     name: 'PESCE PETTINE',
     sci_name: 'Xyrichthys novacula',
     coeff: 4
   },
-  103: {
-    id: 103,
+  104: {
+    id: 104,
     name: 'PESCE PILOTA',
     sci_name: 'Naucrates ductor',
     coeff: 6
   },
-  104: {
-    id: 104,
+  105: {
+    id: 105,
     name: 'PESCE PRETE',
     sci_name: 'Uranoscopus scaber',
     coeff: 2
   },
-  105: { id: 105, name: 'PESCE SAN PIETRO', sci_name: 'Zeus faber', coeff: 6 },
-  106: {
-    id: 106,
+  106: { id: 106, name: 'PESCE SAN PIETRO', sci_name: 'Zeus faber', coeff: 6 },
+  107: {
+    id: 107,
     name: 'PESCE SERRA',
     sci_name: 'Pomatomus saltatrix',
     coeff: 6
   },
-  107: {
-    id: 107,
+  108: {
+    id: 108,
     name: 'PESCE TROMBETTA',
     sci_name: 'Macroramphosus scolopax',
     coeff: 6
   },
-  108: { id: 108, name: 'RANA PESCATRICE', sci_name: 'Lophius sp.', coeff: 2 },
-  109: { id: 109, name: 'RAZZA', sci_name: 'Raja sp.', coeff: 2 },
-  110: {
-    id: 110,
+  109: { id: 109, name: 'RANA PESCATRICE', sci_name: 'Lophius sp.', coeff: 2 },
+  110: { id: 110, name: 'RAZZA', sci_name: 'RAJIDAE fam.', coeff: 2 },
+  111: {
+    id: 111,
     name: 'RE DI TRIGLIE',
     sci_name: 'Apogon imberbis',
     coeff: 4
   },
-  111: { id: 111, name: 'RICCIOLA', sci_name: 'Seriola dumerili', coeff: 6 },
-  112: { id: 112, name: 'ROMBO', sci_name: 'SCOPHTHALMIDAE fam.', coeff: 2 },
-  113: { id: 113, name: 'ROMBO DI RENA', sci_name: 'Bothus podas', coeff: 2 },
-  114: { id: 114, name: 'SACCHETTO', sci_name: 'Serranus hepatus', coeff: 4 },
-  115: { id: 115, name: 'SALPA', sci_name: 'Sarpa salpa', coeff: 6 },
-  116: {
-    id: 116,
-    name: 'SARAGO FARAONE',
-    sci_name: 'Diplodus cervinus',
-    coeff: 6
-  },
+  112: { id: 112, name: 'RICCIOLA', sci_name: 'Seriola dumerili', coeff: 6 },
+  113: { id: 113, name: 'ROMBO', sci_name: 'SCOPHTHALMIDAE fam.', coeff: 2 },
+  114: { id: 114, name: 'ROMBO DI RENA', sci_name: 'Bothus podas', coeff: 2 },
+  115: { id: 115, name: 'SACCHETTO', sci_name: 'Serranus hepatus', coeff: 4 },
+  116: { id: 116, name: 'SALPA', sci_name: 'Sarpa salpa', coeff: 6 },
   117: {
     id: 117,
-    name: 'SARAGO FASCIATO',
-    sci_name: 'Diplodus vulgaris',
+    name: 'SARAGO FARAONE',
+    sci_name: 'Diplodus cervinus cervinus',
     coeff: 6
   },
   118: {
     id: 118,
-    name: 'SARAGO MAGGIORE',
-    sci_name: 'Diplodus sargus',
+    name: 'SARAGO FASCIATO',
+    sci_name: 'Diplodus vulgaris',
     coeff: 6
   },
   119: {
     id: 119,
-    name: 'SARAGO PIZZUTO',
-    sci_name: 'Diplodus puntazzo',
+    name: 'SARAGO MAGGIORE',
+    sci_name: 'Diplodus sargus sargus',
     coeff: 6
   },
   120: {
     id: 120,
+    name: 'SARAGO PIZZUTO',
+    sci_name: 'Diplodus puntazzo',
+    coeff: 6
+  },
+  121: {
+    id: 121,
     name: 'SARAGO SPARAGLIONE',
     sci_name: 'Diplodus annularis',
     coeff: 6
   },
-  121: { id: 121, name: 'SARDINA', sci_name: 'CLUPEIDAE fam.', coeff: 6 },
-  122: { id: 122, name: 'SCIARRANO', sci_name: 'Serranus scriba', coeff: 4 },
-  123: { id: 123, name: 'SCORFANO', sci_name: 'Scorpaena sp.', coeff: 2 },
-  124: {
-    id: 124,
+  122: { id: 122, name: 'SARDINA', sci_name: 'CLUPEIDAE fam.', coeff: 6 },
+  123: { id: 123, name: 'SCIARRANO', sci_name: 'Serranus scriba', coeff: 4 },
+  124: { id: 124, name: 'SCORFANO', sci_name: 'Scorpaena sp.', coeff: 2 },
+  125: {
+    id: 125,
     name: 'SCORFANO NERO',
     sci_name: 'Scorpaena porcus',
     coeff: 2
   },
-  125: {
-    id: 125,
+  126: {
+    id: 126,
     name: 'SCORFANO ROSSO',
     sci_name: 'Scorpaena scrofa',
     coeff: 2
   },
-  126: { id: 126, name: 'SCORFANOTTO', sci_name: 'Scorpaena notata', coeff: 2 },
-  127: {
-    id: 127,
+  127: { id: 127, name: 'SCORFANOTTO', sci_name: 'Scorpaena notata', coeff: 2 },
+  128: {
+    id: 128,
     name: 'SERPENTE DI MARE',
     sci_name: 'Ophisurus serpens',
     coeff: 2
   },
-  128: { id: 128, name: 'SGOMBRO', sci_name: 'Scomber scombrus', coeff: 6 },
-  129: { id: 129, name: 'SOGLIOLA', sci_name: 'SOLEIDAE fam.', coeff: 2 },
-  130: { id: 130, name: 'SPIGOLA', sci_name: 'Dicentrarchus labrax', coeff: 6 },
+  129: { id: 129, name: 'SGOMBRO', sci_name: 'Scomber scombrus', coeff: 6 },
+  130: { id: 130, name: 'SOGLIOLA', sci_name: 'SOLEIDAE fam.', coeff: 2 },
   131: {
     id: 131,
-    name: 'SPIGOLA MACULATA',
-    sci_name: 'Dicentrarchus maculatus',
+    name: 'SPIGOLA / SPIG.MACULATA',
+    sci_name: 'Dicentrarchus sp.',
     coeff: 6
   },
-  132: { id: 132, name: 'SPINAROLO', sci_name: 'Squalus acanthias', coeff: 6 },
-  133: { id: 133, name: 'SQUADRO', sci_name: 'Squatina squatina', coeff: 2 },
-  134: { id: 134, name: 'SQUALO', sci_name: 'CARCHARHINIDAE fam.', coeff: 6 },
+  132: {
+    id: 132,
+    name: 'GHIOZZETTO ISOLANO',
+    sci_name: 'Didogobius splechtnai',
+    coeff: 6
+  },
+  133: {
+    id: 133,
+    name: 'GHIOZZETTO DI MARSIGLIA',
+    sci_name: 'Gammogobius  steinitzi',
+    coeff: 6
+  },
+  134: {
+    id: 134,
+    name: 'SAUCIA MORA',
+    sci_name: 'Arnoglossus thori',
+    coeff: 2
+  },
   135: {
     id: 135,
     name: 'SUCCIASCOGLIO',
@@ -512,8 +507,8 @@ export const subjects = {
   },
   136: {
     id: 136,
-    name: 'SUCCIASC. OLIVACEO',
-    sci_name: 'Lapadogaster candollei',
+    name: 'SUCCIASC.OLIVACEO',
+    sci_name: 'Lapadogaster candolii',
     coeff: 2
   },
   137: { id: 137, name: 'SUGARELLO', sci_name: 'Trachurus sp.', coeff: 6 },
@@ -524,7 +519,12 @@ export const subjects = {
     coeff: 6
   },
   139: { id: 139, name: 'TONNO', sci_name: 'Thunnus sp.', coeff: 6 },
-  140: { id: 140, name: 'TORDO', sci_name: 'Labrus viridis', coeff: 4 },
+  140: {
+    id: 140,
+    name: 'TORDO / TORDO NERO',
+    sci_name: 'Labrus sp.',
+    coeff: 4
+  },
   141: {
     id: 141,
     name: 'TORDO CANINO',
@@ -558,7 +558,7 @@ export const subjects = {
   146: {
     id: 146,
     name: 'TORDO FISCHIETTO',
-    sci_name: 'Labrus bimaculatus',
+    sci_name: 'Labrus mixtus',
     coeff: 4
   },
   147: {
@@ -573,38 +573,43 @@ export const subjects = {
     sci_name: 'Symphodus rostratus',
     coeff: 4
   },
-  149: { id: 149, name: 'TORDO NERO', sci_name: 'Labrus merula', coeff: 4 },
-  150: {
-    id: 150,
+  149: {
+    id: 149,
     name: 'TORDO OCCHIONERO',
     sci_name: 'Symphodus melops',
     coeff: 4
   },
-  151: {
-    id: 151,
+  150: {
+    id: 150,
     name: 'TORDO OCELLATO',
     sci_name: 'Symphodus ocellatus',
     coeff: 4
   },
-  152: { id: 152, name: 'TORDO PAVONE', sci_name: 'Symphodus tinca', coeff: 4 },
-  153: {
-    id: 153,
+  151: { id: 151, name: 'TORDO PAVONE', sci_name: 'Symphodus tinca', coeff: 4 },
+  152: {
+    id: 152,
     name: 'TORDO ROSSO',
     sci_name: 'Symphodus mediterraneus',
     coeff: 4
   },
-  154: {
-    id: 154,
+  153: {
+    id: 153,
     name: 'TORDO VERDE',
     sci_name: 'Symphodus roissali',
     coeff: 4
   },
-  155: { id: 155, name: 'TORPEDINE ', sci_name: 'Torpedo sp.', coeff: 2 },
-  156: { id: 156, name: 'TRACINA', sci_name: 'Trachinus sp.', coeff: 2 },
-  157: { id: 157, name: 'TRIGLIA', sci_name: 'Mullus sp.', coeff: 4 },
-  158: { id: 158, name: 'TRIGONE', sci_name: 'Dasyatis sp.', coeff: 2 },
-  159: { id: 159, name: 'TROTA DI MARE', sci_name: 'Salmo trutta', coeff: 6 },
-  160: { id: 160, name: 'ZERRO', sci_name: 'Spicara smaris', coeff: 6 }
+  154: { id: 154, name: 'TORPEDINE', sci_name: 'TORPEDINIDAE fam.', coeff: 2 },
+  155: { id: 155, name: 'TRACINA', sci_name: 'Trachinus sp.', coeff: 2 },
+  156: { id: 156, name: 'TRIGLIA', sci_name: 'Mullus sp.', coeff: 4 },
+  157: { id: 157, name: 'TRIGONE', sci_name: 'DASYATIDAE fam.', coeff: 2 },
+  158: {
+    id: 158,
+    name: 'TROTA DI MARE',
+    sci_name: 'Salmo trutta trutta',
+    coeff: 6
+  },
+  159: { id: 159, name: 'ZERRO', sci_name: 'Spicara smaris', coeff: 6 },
+  160: { id: 160, name: 'NUOVA SPECIE B', sci_name: 'non in elenco', coeff: 6 }
 };
 
 export const subjectsList = Object.keys(subjects).map(key => subjects[key]);
