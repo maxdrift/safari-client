@@ -12,9 +12,19 @@ const columns = ['file', 'jury', 'subj_id', 'subj_name', 'coeff'];
 const exportToCSV = (slides, callback) => {
   ga.event('CSV', 'export').send();
   let csvData = [];
+  const knownSpecies = [];
   for (let i = 0; i < slides.length; i += 1) {
     const slide = slides[i];
     if (slide.state > ExcludedState) {
+      if (knownSpecies.indexOf(slide.subjectid) > -1) {
+        dialog.showErrorBox(
+          'Impossibile exportare la scheda concorrente',
+          'Sono presenti specie doppie.'
+        );
+        csvData = null;
+        break;
+      }
+      knownSpecies.push(slide.subjectid);
       if (!slide.subjectid || slide.subjectid === 0) {
         dialog.showErrorBox(
           'Impossibile exportare la scheda concorrente',
