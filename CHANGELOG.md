@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.0.8
+- Add duplicate subject check
+- Update subjects list
+
 ### 0.0.7
 - Improve tracking
 - Implement check for orphan images at startup
