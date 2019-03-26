@@ -1,24 +1,28 @@
-## Changelog
+# Changelog
 
-### 0.0.9
+## 0.0.10
+
+- Remove headers from CSV...again.
+
+## 0.0.9
 
 - Use headers and `;` separator in exported CSV
 
-### 0.0.8
+## 0.0.8
 
 - Add duplicate subject check
 - Update subjects list
 
-### 0.0.7
+## 0.0.7
 
 - Improve tracking
 - Implement check for orphan images at startup
 
-### 0.0.6
+## 0.0.6
 
 - Add more metrics
 
-### 0.0.5
+## 0.0.5
 
 - Delegate win build to appveyor
 - Add Google Analytics support
@@ -33,17 +37,17 @@
 - Upgrade Material-UI to 3.0.3
 - Minor fixes to menus and message translations
 
-### 0.0.4
+## 0.0.4
 
 - Set up auto updates via 'update-electron-app'
 
-### 0.0.3
+## 0.0.3
 
 - Update Travis config for deployment
 - Update AppVeyor config with artifacts and deployment
 
-### 0.0.2
+## 0.0.2
 
 - Remove stale tests
 
-### 0.0.1 :rocket: Launch
+## 0.0.1 :rocket: Launch

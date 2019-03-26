@@ -1,7 +1,7 @@
 {
   "name": "safari-client",
   "productName": "Safari Client",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Desktop application to select and tag images in Safari Fotosub competitions",
   "scripts": {
     "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
