@@ -11,7 +11,7 @@ const columns = ['file', 'jury', 'subj_id', 'subj_name', 'coeff'];
 
 const exportToCSV = (slides, callback) => {
   ga.event('CSV', 'export').send();
-  let csvData = [['NOME_FILE', 'SEL.', 'NUM_SPECIE', 'NOME_SPECIE', 'COEFF.']];
+  let csvData = [];
   const knownSpecies = [];
   for (let i = 0; i < slides.length; i += 1) {
     const slide = slides[i];
