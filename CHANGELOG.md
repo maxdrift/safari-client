@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.11
+
+- Update dependencies addressing their security vulnerabilities and apply lint-fix
+
 ## 0.0.10
 
 - Remove headers from CSV...again.
