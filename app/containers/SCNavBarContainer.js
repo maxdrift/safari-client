@@ -34,4 +34,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(openSubjectsModal(ids, subjectid))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SCNavBar);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SCNavBar);

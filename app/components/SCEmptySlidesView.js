@@ -12,8 +12,8 @@ const styles = theme => ({
     position: 'absolute',
     left: 0,
     right: 0,
-    top: theme.spacing.unit * 15,
-    bottom: theme.spacing.unit * 10
+    top: theme.spacing(15),
+    bottom: theme.spacing(10)
   },
   message: {}
 });
@@ -27,11 +27,7 @@ const SCEmptySlidesView = ({ classes, onFilesSelected }) => (
       justify="center"
     >
       <div>
-        <Typography
-          variant="display1"
-          color="inherit"
-          className={classes.message}
-        >
+        <Typography variant="h4" color="inherit" className={classes.message}>
           Carica delle immagini per iniziare...
         </Typography>
       </div>

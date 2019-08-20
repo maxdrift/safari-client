@@ -13,6 +13,9 @@ import { addSlidesAsync } from '../actions/slides';
 const ga = remote.getGlobal('ga');
 
 const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true
+  },
   palette: {
     primary: blue,
     secondary: red
@@ -66,4 +69,7 @@ const mapDispatchToProps = dispatch => ({
   reloadSlides: paths => dispatch(addSlidesAsync(paths))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

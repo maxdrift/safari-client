@@ -7,10 +7,10 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit / 2
+    margin: theme.spacing(0.5)
   },
   extendedIcon: {
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing(1)
   }
 });
 

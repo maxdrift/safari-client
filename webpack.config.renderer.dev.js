@@ -89,6 +89,12 @@ export default merge.smart(baseConfig, {
             options: {
               sourceMap: true
             }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
           }
         ]
       },
@@ -106,6 +112,12 @@ export default merge.smart(baseConfig, {
               importLoaders: 1,
               localIdentName: '[name]__[local]__[hash:base64:5]'
             }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
           }
         ]
       },
@@ -118,6 +130,12 @@ export default merge.smart(baseConfig, {
           },
           {
             loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
             options: {
               sourceMap: true
             }
@@ -141,6 +159,12 @@ export default merge.smart(baseConfig, {
               sourceMap: true,
               importLoaders: 1,
               localIdentName: '[name]__[local]__[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
             }
           },
           {

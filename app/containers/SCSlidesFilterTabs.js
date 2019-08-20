@@ -42,4 +42,7 @@ const mapDispatchToProps = dispatch => ({
   onChange: (event, filter) => dispatch(setVisibilityFilter(filter))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SCTabBar);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SCTabBar);

@@ -42,7 +42,7 @@ const SCSelectedToolbar = props => (
       iconComponent={<CloseIcon />}
       iconOnly
     />
-    <Typography variant="title" color="inherit" className={props.classes.title}>
+    <Typography variant="h6" color="inherit" className={props.classes.title}>
       {selectedSlidesCountLabel(props.selectedSlidesCount)}
     </Typography>
 

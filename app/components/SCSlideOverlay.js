@@ -31,7 +31,7 @@ const SCSlideOverlay = ({
   <div className="slide-overlay">
     <SCSlideHeader>
       <Typography
-        variant="subheading"
+        variant="subtitle1"
         color="inherit"
         align="center"
         className={classes.title}

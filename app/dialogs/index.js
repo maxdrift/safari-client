@@ -22,9 +22,7 @@ export const showSaveDialog = content => {
         if (err) {
           dialog.showErrorBox(
             'Error di salvataggio',
-            `Si è verificato un errore durante il salvataggio del file: ${
-              err.message
-            }`
+            `Si è verificato un errore durante il salvataggio del file: ${err.message}`
           );
         }
         dialog.showMessageBox({
