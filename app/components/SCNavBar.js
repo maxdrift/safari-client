@@ -12,10 +12,10 @@ const styles = theme => ({
     flexGrow: 1
   },
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing.unit
   },
   extendedIcon: {
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing.unit
   }
 });
 

@@ -17,7 +17,7 @@ const styles = () => ({
 
 const SCToolbar = ({ classes, canExport, exportToCSV }) => (
   <Toolbar className={classes.root}>
-    <Typography variant="h6" color="inherit" className={classes.title}>
+    <Typography variant="title" color="inherit" className={classes.title}>
       Safari Client
     </Typography>
     <SCNavBarButton

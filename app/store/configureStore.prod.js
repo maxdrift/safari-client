@@ -1,16 +1,16 @@
 // @flow
-import { applyMiddleware, compose, createStore } from 'redux';
-import { routerMiddleware } from 'connected-react-router';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { createBrowserHistory } from 'history';
+import { createHashHistory } from 'history';
+import { routerMiddleware } from 'react-router-redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import createElectronStorage from 'redux-persist-electron-storage';
 import { enableBatching } from 'redux-batched-actions';
-import createRootReducer from '../reducers';
+import rootReducer from '../reducers';
 
-export const history = createBrowserHistory();
-const rootReducer = createRootReducer(history);
+const history = createHashHistory();
 const router = routerMiddleware(history);
+const enhancer = applyMiddleware(thunk, router);
 
 const persistConfig = {
   key: 'root',
@@ -20,23 +20,12 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export default function configureStore(initialState) {
+function configureStore(initialState?: counterStateType) {
   const reducer = enableBatching(persistedReducer);
-
-  const store = createStore(
-    reducer, // root reducer with router state
-    initialState,
-    compose(
-      applyMiddleware(
-        thunk,
-        router // for dispatching history actions
-        // ... other middlewares ...
-      )
-    )
-  );
-
+  const store = createStore(reducer, initialState, enhancer);
   const persistor = persistStore(store);
-  // persistor.purge();
 
   return { store, persistor };
 }
+
+export default { configureStore, history };

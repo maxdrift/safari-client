@@ -44,38 +44,46 @@ const slides = (state = initialState, action) => {
     case 'UPDATE_SLIDE_INDEX':
       return arrayMove(state, action.oldIndex, action.newIndex);
     case 'TOGGLE_SLIDE_SELECTED':
-      return state.map(slide =>
-        slide.id === action.id ? { ...slide, selected: !slide.selected } : slide
+      return state.map(
+        slide =>
+          slide.id === action.id
+            ? { ...slide, selected: !slide.selected }
+            : slide
       );
     case 'SELECT_ALL_SLIDES':
-      return state.map(slide =>
-        slide.state === action.filter || action.filter === -1
-          ? { ...slide, selected: true }
-          : slide
+      return state.map(
+        slide =>
+          slide.state === action.filter || action.filter === -1
+            ? { ...slide, selected: true }
+            : slide
       );
     case 'DESELECT_ALL_SLIDES':
-      return state.map(slide =>
-        slide.state === action.filter || action.filter === -1
-          ? { ...slide, selected: false }
-          : slide
+      return state.map(
+        slide =>
+          slide.state === action.filter || action.filter === -1
+            ? { ...slide, selected: false }
+            : slide
       );
     case 'TOGGLE_SLIDE_STATE':
-      return state.map(slide =>
-        slide.id === action.id
-          ? { ...slide, state: (slide.state + 1) % 3 }
-          : slide
+      return state.map(
+        slide =>
+          slide.id === action.id
+            ? { ...slide, state: (slide.state + 1) % 3 }
+            : slide
       );
     case 'SET_STATE_TO_SELECTED_SLIDES':
-      return state.map(slide =>
-        slide.selected
-          ? { ...slide, state: action.state, selected: false }
-          : slide
+      return state.map(
+        slide =>
+          slide.selected
+            ? { ...slide, state: action.state, selected: false }
+            : slide
       );
     case 'SET_SLIDES_SUBJECT':
-      return state.map(slide =>
-        action.ids.includes(slide.id)
-          ? { ...slide, subjectid: action.subjectid, selected: false }
-          : slide
+      return state.map(
+        slide =>
+          action.ids.includes(slide.id)
+            ? { ...slide, subjectid: action.subjectid, selected: false }
+            : slide
       );
     default:
       return state;

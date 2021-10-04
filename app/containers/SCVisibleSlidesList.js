@@ -24,7 +24,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(updateSlideIndex(oldIndex, newIndex))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SCSortableSlidesList);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  SCSortableSlidesList
+);

@@ -11,7 +11,4 @@ const mapDispatchToProps = dispatch => ({
   onFilesSelected: paths => dispatch(addSlidesAsync(paths))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SCSlidesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SCSlidesContainer);

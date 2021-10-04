@@ -23,12 +23,9 @@ export const getVisibleSlides = createSelector(
   }
 );
 
-export const selectedSlideIds = createSelector(
-  [getSlides],
-  slides =>
-    slides.reduce(
-      (selected, slide) =>
-        slide.selected ? [...selected, slide.id] : selected,
-      []
-    )
+export const selectedSlideIds = createSelector([getSlides], slides =>
+  slides.reduce(
+    (selected, slide) => (slide.selected ? [...selected, slide.id] : selected),
+    []
+  )
 );

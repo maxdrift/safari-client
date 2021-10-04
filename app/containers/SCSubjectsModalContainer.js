@@ -21,7 +21,4 @@ const mapDispatchToProps = dispatch => ({
   onAbortedSubject: () => dispatch(closeSubjectsModal())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SCSubjectsModal);
+export default connect(mapStateToProps, mapDispatchToProps)(SCSubjectsModal);

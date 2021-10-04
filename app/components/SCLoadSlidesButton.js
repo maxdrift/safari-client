@@ -1,26 +1,26 @@
 // @flow
 import React from 'react';
 import PropTypes from 'prop-types';
-import Fab from '@material-ui/core/Fab';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import AddToPhotos from '@material-ui/icons/AddToPhotos';
 import { showOpenDialog } from '../dialogs';
 
 const styles = theme => ({
   button: {
     position: 'fixed',
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
-    margin: theme.spacing(1)
+    bottom: theme.spacing.unit * 2,
+    right: theme.spacing.unit * 2,
+    margin: theme.spacing.unit
   },
   extendedIcon: {
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing.unit
   }
 });
 
 const SCLoadSlidesButton = ({ classes, text, onClick }) => (
-  <Fab
-    variant="extended"
+  <Button
+    variant="extendedFab"
     className={classes.button}
     color="secondary"
     aria-label={text}
@@ -28,7 +28,7 @@ const SCLoadSlidesButton = ({ classes, text, onClick }) => (
   >
     <AddToPhotos className={classes.extendedIcon} />
     {text}
-  </Fab>
+  </Button>
 );
 
 SCLoadSlidesButton.propTypes = {
