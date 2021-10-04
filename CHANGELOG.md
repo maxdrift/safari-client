@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.11
+
+- Strip slide file extension when exporting CSV.
+
 ## 0.0.10
 
 - Remove headers from CSV...again.

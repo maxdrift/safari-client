@@ -36,7 +36,7 @@ const exportToCSV = (slides, callback) => {
       const juryMark = slide.state === JuryState ? 'X' : '';
       const subject = subjects[slide.subjectid];
       csvData.push([
-        slide.id,
+        slide.id.replace(/\.[^/.]+$/, ""),
         juryMark,
         subject.id,
         subject.name,
