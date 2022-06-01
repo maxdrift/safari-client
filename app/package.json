@@ -16,7 +16,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "sharp": "^0.20.8",
+    "sharp": "^0.30.5",
     "typeface-roboto": "^0.0.54"
   }
 }
