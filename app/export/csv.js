@@ -18,7 +18,7 @@ const exportToCSV = (slides, callback) => {
     if (slide.state > ExcludedState) {
       if (knownSpecies.indexOf(slide.subjectid) > -1) {
         dialog.showErrorBox(
-          'Impossibile exportare la scheda concorrente',
+          'Impossibile esportare la scheda concorrente',
           'Sono presenti specie doppie.'
         );
         csvData = null;
@@ -27,7 +27,7 @@ const exportToCSV = (slides, callback) => {
       knownSpecies.push(slide.subjectid);
       if (!slide.subjectid || slide.subjectid === 0) {
         dialog.showErrorBox(
-          'Impossibile exportare la scheda concorrente',
+          'Impossibile esportare la scheda concorrente',
           'Non a tutte le slide è stata assegnata una specie.'
         );
         csvData = null;
