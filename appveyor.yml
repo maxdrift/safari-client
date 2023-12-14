@@ -24,6 +24,7 @@ install:
   - ps: Install-Product node $env:nodejs_version x64
   - set CI=true
   - yarn
+  - yarn global add windows-build-tools
   - cd app && yarn
 
 test_script:
