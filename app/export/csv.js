@@ -7,7 +7,7 @@ const { dialog } = remote;
 
 const ga = remote.getGlobal('ga');
 
-const columns = ['file', 'jury', 'subj_id', 'subj_name', 'coeff'];
+const columns = ['file', 'jury', 'subj_id', 'subj_name', 'coeff', 'version'];
 
 const exportToCSV = (slides, callback) => {
   ga.event('CSV', 'export').send();
@@ -40,7 +40,8 @@ const exportToCSV = (slides, callback) => {
         juryMark,
         subject.id,
         subject.name,
-        subject.coeff
+        subject.coeff,
+        subject.version
       ]);
     }
   }
