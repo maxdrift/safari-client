@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.12
+
+- Import subjects from CSV at compile time
+- Add version to subjects sheet and export NEW version column with output CSV.
+
 ## 0.0.11
 
 - Strip slide file extension when exporting CSV.
