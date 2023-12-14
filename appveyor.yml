@@ -1,4 +1,4 @@
-os: unstable
+image: Visual Studio 2013
 
 environment:
   matrix:
